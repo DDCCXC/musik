@@ -70,7 +70,7 @@ class Musik(Cog):
     async def queue(self, Inter:Interaction|commands.context.Context):
         await queue(self,Inter)
         
-    async def info_filter(self, Inter:Interaction|commands.context.Context):
+    async def info_filters(self, Inter:Interaction|commands.context.Context):
         await check(self,Inter)
 def setup(bot: Bot) -> None:
     bot.add_cog(Musik(bot))

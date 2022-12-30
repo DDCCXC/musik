@@ -4,11 +4,15 @@ import nextcord,math
 
 timeout= nextcord.embeds.Embed(title='⏱ หมดเวลาแล้วนะคะหนูขอตัวไปก่อนนะคะ' ,description ='ถ้ามีอะไรใช้คำสั่งax!hนะคะ')
 class _btn(nextcord.ui.View):
+        message:nextcord.Message
         def __init__(self,player,Member: nextcord.Member):
             self.player=player
             self.page=1
             self.Member= Member
             super().__init__(timeout=300)
+        def set_message(self,message:nextcord.Message):
+            self.message=message
+        
         @nextcord.ui.button(label='◀', style=nextcord.ButtonStyle.green ,custom_id='ghgh')
         async def b(self,button: nextcord.ui.Button, interaction: nextcord.Interaction ):
                         emed = nextcord.Embed(color=0xff470b) 
@@ -85,4 +89,6 @@ async def queue(self, ctx: Interaction | Context):
         embed = nextcord.Embed(colour=0xff470b,
                               description=f'คิวเพลงทั้งหมด **{len(player.queue)} tracks**\n\n{queue_list}')
         embed.set_footer(text=f'คุณอยู่หน้าที่ {page}/{pages}')
-        a=await ctx.send(embed=embed,view=_btn(player,ctx.user if type(ctx) is Interaction else ctx.author))
+        btn=_btn(player,ctx.user if type(ctx) is Interaction else ctx.author)
+        a=await ctx.send(embed=embed,view=btn)
+        btn.set_message(a)

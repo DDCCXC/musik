@@ -41,7 +41,6 @@ class music_command(Cog):
     async def now(self, inter: Interaction) -> None:
         await self.player.now(inter) 
  
-    # it isnot done
     @basic.subcommand(name="queue", description="Asdasd")
     async def queue(self, inter: Interaction) -> None:
         await self.player.queue(inter)     
@@ -62,20 +61,63 @@ class music_command(Cog):
     async def seek(self, inter: Interaction,sec:int) -> None:
         await self.player.seek(inter,sec)   
       
-    # it isnot done
     @basic.subcommand(name="volume", description="Asdasd")
     async def volume(self, inter: Interaction,volume:int= nextcord.SlashOption(min_value=1,max_value=1000)) -> None:
         await self.player.volume(inter,volume) 
     
-    # it isnot done
-    @basic.subcommand(name="info_filter", description="Asdasd")
-    async def info_filter(self, inter: Interaction) -> None:
-        await self.player.info_filter(inter)      
+    @basic.subcommand(name="info_filters", description="Asdasd")
+    async def info_filters(self, inter: Interaction) -> None:
+        await self.player.info_filters(inter)      
         
-    # filter
-    @slash_command(name="bassboost", description="Asdasd")
+    # filters
+    @misik.subcommand()
+    async def filters(self,inter: nextcord.Interaction):...
+    @filters.subcommand(name="bassboost", description="Asdasd")
     async def bassboost(self, inter: Interaction) -> None:
         ...
+    @filters.subcommand(name="bassboost", description="Asdasd")
+    async def bassboost(self, inter: Interaction) -> None:
+        ...
+    @filters.subcommand(name="bassboost", description="Asdasd")
+    async def bassboost(self, inter: Interaction) -> None:
+        ...
+    @filters.subcommand(name="bassboost", description="Asdasd")
+    async def bassboost(self, inter: Interaction) -> None:
+        ...
+    @filters.subcommand(name="bassboost", description="Asdasd")
+    async def bassboost(self, inter: Interaction) -> None:
+        ...
+    @filters.subcommand(name="bassboost", description="Asdasd")
+    async def bassboost(self, inter: Interaction) -> None:
+        ...
+    @filters.subcommand(name="bassboost", description="Asdasd")
+    async def bassboost(self, inter: Interaction) -> None:
+        ...
+    @filters.subcommand(name="bassboost", description="Asdasd")
+    async def bassboost(self, inter: Interaction) -> None:
+        ...
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 def setup(bot: Bot) -> None:
     bot.add_cog(music_command(bot))
