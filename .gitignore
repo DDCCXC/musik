@@ -1,0 +1,6 @@
+.env
+/logs
+/py
+/plugins
+Lavalink.jar
+/*/**/__pycache__
