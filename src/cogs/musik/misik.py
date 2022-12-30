@@ -31,64 +31,46 @@ class Musik(Cog):
         ws = self.bot._connection._get_websocket(guild_id)
         await ws.voice_state(str(guild_id), channel_id)
     
-    async def join_to_channel(self, Inter:Interaction)->bool:
+    async def join_to_channel(self, Inter:Interaction|commands.context.Context)->bool:
         await join(self,Inter)
         
-    async def disconnect(self, Inter:Interaction):
+    async def disconnect(self, Inter:Interaction|commands.context.Context):
         await disconnect(self,Inter)
 
-    async def play(self, Inter:Interaction, query: str):
+    async def play(self, Inter:Interaction|commands.context.Context, query: str):
         await play(self,Inter,query)
         
-    async def slash_skip(self, Inter:Interaction):
-        await slash_skip(self,Inter)
+    async def skip(self, Inter:Interaction|commands.context.Context):
+        await skip(self,Inter)
         
-    async def prefix_skip(self, ctx:commands.context.Context):
-        await prefix_skip(self,ctx)
+    async def stop(self, Inter:Interaction|commands.context.Context):
+        await stop(self,Inter)
         
-    async def slash_stop(self, Inter:Interaction):
-        await slash_stop(self,Inter)
+    async def pause(self, Inter:Interaction|commands.context.Context):
+        await pause(self,Inter)
         
-    async def prefix_stop(self, ctx:commands.context.Context):
-        await prefix_stop(self,ctx)
+    async def now(self, Inter:Interaction|commands.context.Context):
+        await now(self,Inter)
         
-    async def slash_pause(self, Inter:Interaction):
-        await slash_pause(self,Inter)
-        
-    async def prefix_pause(self, ctx:commands.context.Context):
-        await prefix_pause(self,ctx)
-        
-    async def slash_now(self, Inter:Interaction):
-        await slash_now(self,Inter)
-        
-    async def prefix_now(self, ctx:commands.context.Context):
-        await prefix_now(self,ctx)
-        
-    async def remove(self, ctx:commands.context.Context,index:int):
+    async def remove(self, ctx:Interaction|commands.context.Context,index:int):
         await remove(self,ctx,index)
         
-    async def slash_repeat(self, Inter:Interaction):
-        await slash_repeat(self,Inter)
-        
-    async def prefix_repeat(self, ctx:commands.context.Context):
-        await prefix_repeat(self,ctx)
+    async def repeat(self, Inter:Interaction|commands.context.Context):
+        await repeat(self,Inter)
     
-    async def slash_shuffle(self, Inter:Interaction):
-        await slash_shuffle(self,Inter)
-        
-    async def prefix_shuffle(self, ctx:commands.context.Context):
-        await prefix_shuffle(self,ctx)
+    async def shuffle(self, Inter:Interaction|commands.context.Context):
+        await shuffle(self,Inter)
     
-    async def seek(self, Inter:Interaction,sec:int):
+    async def seek(self, Inter:Interaction|commands.context.Context,sec:int):
         await seek(self,Inter,sec)
     
-    async def volume(self, Inter:Interaction,_volume:int):
+    async def volume(self, Inter:Interaction|commands.context.Context,_volume:int):
         await volume(self,Inter,_volume)
     
-    async def queue(self, Inter:Interaction):
+    async def queue(self, Inter:Interaction|commands.context.Context):
         await queue(self,Inter)
         
-    async def info_filter(self, Inter:Interaction):
+    async def info_filter(self, Inter:Interaction|commands.context.Context):
         await check(self,Inter)
 def setup(bot: Bot) -> None:
     bot.add_cog(Musik(bot))

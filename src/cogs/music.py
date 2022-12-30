@@ -2,7 +2,7 @@ from nextcord import Interaction, slash_command
 from nextcord.ext.commands import Bot, Cog
 from .musik import Musik
 import nextcord
-class music_slash_command(Cog):
+class music_command(Cog):
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
         self.player =Musik(bot)
@@ -27,19 +27,19 @@ class music_slash_command(Cog):
         
     @basic.subcommand(name="skip", description="Asdasd")
     async def skip(self, inter: Interaction) -> None:
-        await self.player.slash_skip(inter)      
+        await self.player.skip(inter)      
     
     @basic.subcommand(name="stop", description="Asdasd")
     async def stop(self, inter: Interaction) -> None:
-        await self.player.slash_stop(inter) 
+        await self.player.stop(inter) 
         
     @basic.subcommand(name="pause", description="Asdasd")
     async def pause(self, inter: Interaction) -> None:
-        await self.player.slash_pause(inter) 
+        await self.player.pause(inter) 
         
     @basic.subcommand(name="now", description="Asdasd")
     async def now(self, inter: Interaction) -> None:
-        await self.player.slash_now(inter) 
+        await self.player.now(inter) 
  
     # it isnot done
     @basic.subcommand(name="queue", description="Asdasd")
@@ -52,11 +52,11 @@ class music_slash_command(Cog):
         
     @basic.subcommand(name="repeat", description="Asdasd")
     async def repeat(self, inter: Interaction) -> None:
-        await self.player.slash_repeat(inter)
+        await self.player.repeat(inter)
         
     @basic.subcommand(name="shuffle", description="Asdasd")
     async def shuffle(self, inter: Interaction) -> None:
-        await self.player.slash_shuffle(inter) 
+        await self.player.shuffle(inter) 
         
     @basic.subcommand(name="seek", description="Asdasd")
     async def seek(self, inter: Interaction,sec:int) -> None:
@@ -78,4 +78,4 @@ class music_slash_command(Cog):
         ...
     
 def setup(bot: Bot) -> None:
-    bot.add_cog(music_slash_command(bot))
+    bot.add_cog(music_command(bot))
