@@ -11,7 +11,7 @@ async def join(self,ctx:Interaction|Context):
     if not author.voice or not author.voice.channel:
             return False
 
-    v_client = ctx.voice_client | ctx.guild.voice_client if ctx.guild.voice_client else None
+    v_client =  ctx.guild.voice_client if ctx.guild.voice_client else None if typeofctx else ctx.voice_client 
     
     if not v_client:
         permissions = author.voice.channel.permissions_for((ctx.guild.me if ctx.guild is not None else self.bot.user)if typeofctx else ctx.me )

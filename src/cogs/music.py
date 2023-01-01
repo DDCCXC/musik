@@ -73,31 +73,40 @@ class music_command(Cog):
     @misik.subcommand()
     async def filters(self,inter: nextcord.Interaction):...
     @filters.subcommand(name="bassboost", description="Asdasd")
-    async def bassboost(self, inter: Interaction) -> None:
+    async def bassboost(self, inter: Interaction,gain:float= nextcord.SlashOption(min_value=-0.25 ,max_value=1.00)) -> None:
+        await self.player.bb(inter,gain)
+    @filters.subcommand(name="speed", description="Asdasd")
+    async def speed(self, inter: Interaction) -> None:
         ...
-    @filters.subcommand(name="bassboost", description="Asdasd")
-    async def bassboost(self, inter: Interaction) -> None:
+    @filters.subcommand(name="pitch", description="Asdasd")
+    async def pitch(self, inter: Interaction) -> None:
         ...
-    @filters.subcommand(name="bassboost", description="Asdasd")
-    async def bassboost(self, inter: Interaction) -> None:
+        
+    @filters.subcommand(name="level", description="Asdasd")
+    async def level(self, inter: Interaction) -> None:
         ...
-    @filters.subcommand(name="bassboost", description="Asdasd")
-    async def bassboost(self, inter: Interaction) -> None:
+    @filters.subcommand(name="monolevel", description="Asdasd")
+    async def monolevel(self, inter: Interaction) -> None:
         ...
-    @filters.subcommand(name="bassboost", description="Asdasd")
-    async def bassboost(self, inter: Interaction) -> None:
+    @filters.subcommand(name="filterband", description="Asdasd")
+    async def filterband(self, inter: Interaction) -> None:
         ...
-    @filters.subcommand(name="bassboost", description="Asdasd")
-    async def bassboost(self, inter: Interaction) -> None:
+    @filters.subcommand(name="filterwidth", description="Asdasd")
+    async def filterwidth(self, inter: Interaction) -> None:
         ...
-    @filters.subcommand(name="bassboost", description="Asdasd")
-    async def bassboost(self, inter: Interaction) -> None:
+        
+    @filters.subcommand(name="depth", description="Asdasd")
+    async def depth(self, inter: Interaction) -> None:
         ...
-    @filters.subcommand(name="bassboost", description="Asdasd")
-    async def bassboost(self, inter: Interaction) -> None:
+    @filters.subcommand(name="frequency", description="Asdasd")
+    async def frequency(self, inter: Interaction) -> None:
         ...
-    
-    
+    @filters.subcommand(name="smoothing", description="Asdasd")
+    async def smoothing(self, inter: Interaction) -> None:
+        ...
+    @filters.subcommand(name="clean", description="Asdasd")
+    async def clean(self, inter: Interaction) -> None:
+        ...
     
     
     

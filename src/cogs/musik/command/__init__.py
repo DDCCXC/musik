@@ -12,3 +12,4 @@ from .seek import *
 from .volume import *
 from .queue_ import *
 from .info_filter import *
+from .filter_equalizer import *

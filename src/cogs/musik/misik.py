@@ -10,11 +10,11 @@ URL_RX = re.compile(r'https?://(?:www\.)?.+')
 class Musik(Cog):
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
-        bot.lavalink:lavalink.Client
+        self.bot.lavalink:lavalink.Client
         if not hasattr(bot, 'lavalink'):  
             
-            bot.lavalink:lavalink.Client = lavalink.Client(1054981299334549514)
-            bot.lavalink.add_node('127.0.0.1', 2333, 'thampomungdoo', 'sg', 'default-node')  # Host, Port, Password, Region, Name
+            self.bot.lavalink:lavalink.Client = lavalink.Client(1054981299334549514)
+            self.bot.lavalink.add_node('127.0.0.1', 2333, 'thampomungdoo', 'sg', 'default-node')  # Host, Port, Password, Region, Name
 
         lavalink.add_event_hook(self.track_hook)
         
@@ -72,5 +72,8 @@ class Musik(Cog):
         
     async def info_filters(self, Inter:Interaction|commands.context.Context):
         await check(self,Inter)
+    
+    async def bb(self, Inter:Interaction|commands.context.Context,gain: float):
+        await equalizer_controller(self,Inter,gain)
 def setup(bot: Bot) -> None:
     bot.add_cog(Musik(bot))
