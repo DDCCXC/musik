@@ -75,5 +75,24 @@ class Musik(Cog):
     
     async def bb(self, Inter:Interaction|commands.context.Context,gain: float):
         await equalizer_controller(self,Inter,gain)
+        
+    async def timescale(self, Inter:Interaction|commands.context.Context,speed: float,pitch: float,rate: float):
+        await timescale(self,Inter,speed,pitch,rate)
+        
+    async def karaoke(self, Inter:Interaction|commands.context.Context,level: float,monoLevel: float,filterBand: float,filterWidth: float):
+        await karaoke(self,Inter,level,monoLevel,filterBand,filterWidth) 
+        
+    async def rotation(self, Inter:Interaction|commands.context.Context,rotation_hz: float):
+        await rotation(self,Inter,rotation_hz) 
+        
+    async def smoothing(self, Inter:Interaction|commands.context.Context,low: float):
+        await smoothing(self,Inter,low) 
+        
+    async def Vibrato(self, Inter:Interaction|commands.context.Context,depth:float,frequency:float):
+        await Vibrato(self,Inter,depth,frequency) 
+        
+    async def Tremolo(self, Inter:Interaction|commands.context.Context,depth:float,frequency:float):
+        await Tremolo(self,Inter,depth,frequency) 
+        
 def setup(bot: Bot) -> None:
     bot.add_cog(Musik(bot))

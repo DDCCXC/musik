@@ -12,33 +12,6 @@ if __name__ == "__main__":
     bot.load_extension("cogs.music")
     
     # bot.load_extension("cogs.test")
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     bot.run(os.getenv("DISCORD_TOKEN"))

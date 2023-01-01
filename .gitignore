@@ -1,7 +1,7 @@
 .env
+*.jar
+*.yml
 /logs
 /py
 /plugins
-Lavalink.jar
-application.yml
 /*/**/__pycache__

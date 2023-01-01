@@ -21,7 +21,7 @@ async def join(self,ctx:Interaction|Context):
         await author.voice.channel.connect(cls=pyer)
         return True
     else:
-        if v_client.channel.id != ctx.author.voice.channel.id:
+        if v_client.channel.id != author.voice.channel.id:
             return False
 
 

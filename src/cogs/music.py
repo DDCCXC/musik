@@ -72,38 +72,73 @@ class music_command(Cog):
     # filters
     @misik.subcommand()
     async def filters(self,inter: nextcord.Interaction):...
+    
+    # bass
     @filters.subcommand(name="bassboost", description="Asdasd")
-    async def bassboost(self, inter: Interaction,gain:float= nextcord.SlashOption(min_value=-0.25 ,max_value=1.00)) -> None:
+    async def bassboost(self, inter: Interaction,gain:float = nextcord.SlashOption(min_value=-0.25 ,max_value=1.00) ) -> None:
         await self.player.bb(inter,gain)
-    @filters.subcommand(name="speed", description="Asdasd")
-    async def speed(self, inter: Interaction) -> None:
-        ...
-    @filters.subcommand(name="pitch", description="Asdasd")
-    async def pitch(self, inter: Interaction) -> None:
-        ...
+        
+    # Timescale
+    @filters.subcommand(name="timescale", description="Asdasd")
+    async def timescale(self, inter: Interaction,speed:float = nextcord.SlashOption(min_value=0.1,default=1),pitch:float = nextcord.SlashOption(min_value=0.1,default=1),rate:float = nextcord.SlashOption(min_value=0.1,default=1)) -> None:
+        await self.player.timescale(inter,speed,pitch,rate)
+    
+    # Karaoke
+    # {'level': 1.0, 'monoLevel': 1.0, 'filterBand': 220.0, 'filterWidth': 100.0}
+    @filters.subcommand(name="karaoke", description="Asdasd")
+    async def karaoke(self, inter: Interaction,level:float = nextcord.SlashOption(default=1),monolevel:float = nextcord.SlashOption(default=1),filterband:float = nextcord.SlashOption(default=220.0),filterwidth:float = nextcord.SlashOption(default=100.0)) -> None:
+        await self.player.karaoke(inter,level,monolevel,filterband,filterwidth)
+        
         
     @filters.subcommand(name="level", description="Asdasd")
-    async def level(self, inter: Interaction) -> None:
-        ...
+    async def level(self, inter: Interaction,level:float = nextcord.SlashOption(min_value=0.1)) -> None:
+        await self.player.bb(inter,level)
     @filters.subcommand(name="monolevel", description="Asdasd")
-    async def monolevel(self, inter: Interaction) -> None:
-        ...
+    async def monolevel(self, inter: Interaction,monolevel:float = nextcord.SlashOption(min_value=0.1)) -> None:
+        await self.player.bb(inter,monolevel)
     @filters.subcommand(name="filterband", description="Asdasd")
-    async def filterband(self, inter: Interaction) -> None:
-        ...
+    async def filterband(self, inter: Interaction,filterband:float = nextcord.SlashOption(min_value=0.1)) -> None:
+        await self.player.bb(inter,filterband)
     @filters.subcommand(name="filterwidth", description="Asdasd")
-    async def filterwidth(self, inter: Interaction) -> None:
-        ...
+    async def filterwidth(self, inter: Interaction,filterwidth:float = nextcord.SlashOption(min_value=0.1)) -> None:
+        await self.player.bb(inter,filterwidth)
         
-    @filters.subcommand(name="depth", description="Asdasd")
+    # Tremolo
+    @filters.subcommand(name="tremolo", description="Asdasd")
+    async def Tremolo(self, inter: Interaction,depth:float = nextcord.SlashOption(default=1),frequency:float = nextcord.SlashOption(default=1))  -> None:
+        await self.player.Tremolo(inter,depth,frequency)
+    
+    @filters.subcommand(name="tremolo-depth", description="Asdasd")
     async def depth(self, inter: Interaction) -> None:
         ...
-    @filters.subcommand(name="frequency", description="Asdasd")
+    @filters.subcommand(name="tremolo-frequency", description="Asdasd")
     async def frequency(self, inter: Interaction) -> None:
         ...
-    @filters.subcommand(name="smoothing", description="Asdasd")
-    async def smoothing(self, inter: Interaction) -> None:
+        
+        
+    # Vibrato
+    @filters.subcommand(name="vibrato", description="Asdasd")
+    async def Vibrato(self, inter: Interaction,depth:float = nextcord.SlashOption(default=1),frequency:float = nextcord.SlashOption(default=1)) -> None:
+        await self.player.Vibrato(inter,depth,frequency)
+    @filters.subcommand(name="vibrato-depth", description="Asdasd")
+    async def depth(self, inter: Interaction) -> None:
         ...
+    @filters.subcommand(name="vibrato-frequency", description="Asdasd")
+    async def frequency(self, inter: Interaction) -> None:
+        ...
+        
+        
+    # LowPass
+    @filters.subcommand(name="smoothing", description="Asdasd")
+    async def smoothing(self, inter: Interaction,low:float = nextcord.SlashOption(min_value=1.1)) -> None:
+        await self.player.smoothing(inter,low)
+        
+    # Rotation
+    @filters.subcommand(name="rotation", description="Asdasd")
+    async def rotationhz (self, inter: Interaction,rotation:float = nextcord.SlashOption(min_value=0)) -> None:
+        await self.player.rotation(inter,rotation)
+        
+    # Clean
     @filters.subcommand(name="clean", description="Asdasd")
     async def clean(self, inter: Interaction) -> None:
         ...
