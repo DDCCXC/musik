@@ -140,8 +140,19 @@ class music_command(Cog):
         
     # Clean
     @filters.subcommand(name="clean", description="Asdasd")
-    async def clean(self, inter: Interaction) -> None:
-        ...
+    async def clean(self, inter: Interaction,op: str = nextcord.SlashOption(
+        name="picker",
+        choices={"all": "all", 
+                 "equalizer": "equalizer",
+                 "timescale": "timescale",
+                 "karaoke":"karaoke",
+                 "tremolo":"tremolo",
+                 "vibrato":"vibrato",
+                 "smoothing":"smoothing",
+                 "rotation":"rotation",
+                 },
+    )) -> None:
+        await self.player.clean(inter,op)
     
     
     

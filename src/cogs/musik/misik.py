@@ -93,6 +93,8 @@ class Musik(Cog):
         
     async def Tremolo(self, Inter:Interaction|commands.context.Context,depth:float,frequency:float):
         await Tremolo(self,Inter,depth,frequency) 
-        
+       
+    async def clean(self, Inter:Interaction|commands.context.Context,op:str):
+        await clear(self,Inter,op)  
 def setup(bot: Bot) -> None:
     bot.add_cog(Musik(bot))
