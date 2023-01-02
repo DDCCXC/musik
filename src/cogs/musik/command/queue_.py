@@ -72,9 +72,14 @@ class _btn(nextcord.ui.View):
                         
 async def queue(self, ctx: Interaction | Context):
         player = self.bot.lavalink.player_manager.get(ctx.guild.id)
-        if not await self.check_join(ctx,player):return
+        embed = nextcord.Embed(colour=0xff470b)
+        if player is None:
+            embed.title =f'ให้ฉันเข้าก่อนสิ'
+            await ctx.send(embed=embed)
+            return
         if not player.queue:
-            return await ctx.send('> **ไม่มีคิวเพลง**')
+            embed.title =f'คิวว่างจ้า'
+            await ctx.send(embed=embed)
         
         items_per_page = 10
         pages = math.ceil(len(player.queue) / items_per_page)
@@ -86,8 +91,7 @@ async def queue(self, ctx: Interaction | Context):
         for index, track in enumerate(player.queue[start:end], start=start):
             queue_list += f'**{index + 1}** : [**{track.title}**]({track.uri})\n'
 
-        embed = nextcord.Embed(colour=0xff470b,
-                              description=f'คิวเพลงทั้งหมด **{len(player.queue)} tracks**\n\n{queue_list}')
+        embed.description(f'คิวเพลงทั้งหมด **{len(player.queue)} tracks**\n\n{queue_list}')
         embed.set_footer(text=f'คุณอยู่หน้าที่ {page}/{pages}')
         btn=_btn(player,ctx.user if type(ctx) is Interaction else ctx.author)
         a=await ctx.send(embed=embed,view=btn)

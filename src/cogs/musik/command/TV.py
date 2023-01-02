@@ -5,8 +5,11 @@ import nextcord,asyncio,lavalink
 async def Vibrato(self,ctx,depth:float,frequency:float):
         
         player:lavalink.models.DefaultPlayer = self.bot.lavalink.player_manager.get(ctx.guild.id)
-        if not await self.check_join(ctx,player):return
         embed = nextcord.Embed(colour=0xdc4700)
+        if player is None:
+            embed.title =f'ให้ฉันเข้าก่อนสิ'
+            await ctx.send(embed=embed)
+            return
         Vibrato = lavalink.Vibrato()
       
         embed.title =f'คุณได้ปรับระดับtimescaleแล้วจ้า'
@@ -17,8 +20,11 @@ async def Vibrato(self,ctx,depth:float,frequency:float):
         
 async def Tremolo(self,ctx,depth:float,frequency:float):
         player:lavalink.models.DefaultPlayer = self.bot.lavalink.player_manager.get(ctx.guild.id)
-        if not await self.check_join(ctx,player):return
         embed = nextcord.Embed(colour=0xdc4700)
+        if player is None:
+            embed.title =f'ให้ฉันเข้าก่อนสิ'
+            await ctx.send(embed=embed)
+            return
         Tremolo = lavalink.Tremolo()
       
         embed.title =f'คุณได้ปรับระดับtimescaleแล้วจ้า'

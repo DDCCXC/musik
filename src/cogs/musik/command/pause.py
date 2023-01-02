@@ -3,7 +3,10 @@ async def pause(self, ctx):
         """ Pauses/Resumes the current track. """
         player = self.bot.lavalink.player_manager.get(ctx.guild.id)
         emed = nextcord.Embed(color=0xff470b)     
-        if not await self.check_join(ctx,player):return 
+        if player is None:
+            emed.title =f'ให้ฉันเข้าก่อนสิ'
+            await ctx.send(embed=emed)
+            return
         if not player.is_playing:
             emed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
             return await ctx.send(embed=emed)
