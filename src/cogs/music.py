@@ -52,8 +52,8 @@ class music_command(Cog):
         await self.player.remove(inter,index)
         
     @basic.subcommand(name="repeat", description="Asdasd")
-    async def repeat(self, inter: Interaction) -> None:
-        await self.player.repeat(inter)
+    async def repeat(self, inter: Interaction,loop:int=nextcord.SlashOption(name="loop",choices={"None":0,"single":1,"queue":2},default=0)) -> None:
+        await self.player.repeat(inter,loop)
         
     @basic.subcommand(name="shuffle", description="Asdasd")
     async def shuffle(self, inter: Interaction) -> None:
@@ -113,11 +113,11 @@ class music_command(Cog):
         await self.player.Tremolo(inter,depth,frequency)
     
     @filters.subcommand(name="tremolo-depth", description="Asdasd")
-    async def depth(self, inter: Interaction) -> None:
-        ...
+    async def depth(self, inter: Interaction,depth:float = nextcord.SlashOption(default=1)) -> None:
+        await self.player.depth(inter,depth,"Tremolo")
     @filters.subcommand(name="tremolo-frequency", description="Asdasd")
-    async def frequency(self, inter: Interaction) -> None:
-        ...
+    async def frequency(self, inter: Interaction,frequency:float = nextcord.SlashOption(default=1)) -> None:
+        await self.player.depth(inter,frequency,"Tremolo")
         
         
     # Vibrato
@@ -125,11 +125,11 @@ class music_command(Cog):
     async def Vibrato(self, inter: Interaction,depth:float = nextcord.SlashOption(default=1),frequency:float = nextcord.SlashOption(default=1)) -> None:
         await self.player.Vibrato(inter,depth,frequency)
     @filters.subcommand(name="vibrato-depth", description="Asdasd")
-    async def depth(self, inter: Interaction) -> None:
-        ...
+    async def depth(self, inter: Interaction,depth:float = nextcord.SlashOption(default=1)) -> None:
+        await self.player.depth(inter,depth,"Vibrato")
     @filters.subcommand(name="vibrato-frequency", description="Asdasd")
-    async def frequency(self, inter: Interaction) -> None:
-        ...
+    async def frequency(self, inter: Interaction,frequency:float = nextcord.SlashOption(default=1)) -> None:
+        await self.player.frequency(inter,frequency,"Vibrato")
         
         
     # LowPass

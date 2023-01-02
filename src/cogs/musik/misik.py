@@ -55,8 +55,8 @@ class Musik(Cog):
     async def remove(self, ctx:Interaction|commands.context.Context,index:int):
         await remove(self,ctx,index)
         
-    async def repeat(self, Inter:Interaction|commands.context.Context):
-        await repeat(self,Inter)
+    async def repeat(self, Inter:Interaction|commands.context.Context,type:int):
+        await repeat(self,Inter,type)
     
     async def shuffle(self, Inter:Interaction|commands.context.Context):
         await shuffle(self,Inter)
@@ -98,8 +98,15 @@ class Musik(Cog):
         
     async def Tremolo(self, Inter:Interaction|commands.context.Context,depth:float,frequency:float):
         await Tremolo(self,Inter,depth,frequency) 
-       
+        
+    async def depth(self, Inter:Interaction|commands.context.Context,depth:float,ty:str):
+        await depth_(self,Inter,depth,ty)
+        
+    async def frequency(self, Inter:Interaction|commands.context.Context,frequency:float,ty:str):
+        await frequency_(self,Inter,frequency,ty)
+        
     async def clean(self, Inter:Interaction|commands.context.Context,op:str):
         await clear(self,Inter,op)  
+        
 def setup(bot: Bot) -> None:
     bot.add_cog(Musik(bot))

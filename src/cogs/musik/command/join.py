@@ -5,7 +5,9 @@ import nextcord
 async def join(self,ctx:Interaction|Context):
     if ctx.guild is  None:
         return False
-    """ This check ensures that the bot and command author are in the same voicechannel. """
+    embed = nextcord.Embed(colour=0xdc4700)
+        
+    embed.title =f'joined'
     player = self.bot.lavalink.player_manager.create(ctx.guild.id)
     typeofctx=type(ctx) is Interaction
     author = ctx.user if typeofctx else ctx.author
@@ -20,6 +22,7 @@ async def join(self,ctx:Interaction|Context):
                 return False
         player.store('channel', ctx.channel.id)
         await author.voice.channel.connect(cls=pyer)
+        await ctx.send(embed=embed)
         return True
     else:
         if v_client.channel.id != author.voice.channel.id:
