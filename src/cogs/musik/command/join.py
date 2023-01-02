@@ -1,6 +1,7 @@
 from .. import player as pyer
 from nextcord import Interaction
 from nextcord.ext.commands.context import Context
+import nextcord
 async def join(self,ctx:Interaction|Context):
     if ctx.guild is  None:
         return False
@@ -24,21 +25,3 @@ async def join(self,ctx:Interaction|Context):
         if v_client.channel.id != author.voice.channel.id:
             return False
 
-
-async def slash_join(self,Inter:Interaction):
-    if Inter.guild is  None:
-        return False
-    player = self.bot.lavalink.player_manager.create(Inter.guild.id)
-    if not Inter.user.voice or not Inter.user.voice.channel:
-            return False
-    v_client = Inter.guild.voice_client if Inter.guild.voice_client else None
-    if not v_client:
-        permissions = Inter.user.voice.channel.permissions_for(Inter.guild.me if Inter.guild is not None else self.bot.user)
-        if not permissions.connect or not permissions.speak:  # Check user limit too?
-            return False
-        player.store('channel', Inter.channel.id)
-        await Inter.user.voice.channel.connect(cls=pyer)
-        return True
-    else:
-        if v_client.channel.id != Inter.user.voice.channel.id:
-            return False

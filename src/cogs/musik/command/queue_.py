@@ -72,7 +72,7 @@ class _btn(nextcord.ui.View):
                         
 async def queue(self, ctx: Interaction | Context):
         player = self.bot.lavalink.player_manager.get(ctx.guild.id)
-
+        if not await self.check_join(ctx,player):return
         if not player.queue:
             return await ctx.send('> **ไม่มีคิวเพลง**')
         

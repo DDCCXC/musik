@@ -4,6 +4,11 @@ import nextcord,lavalink
 async def clear(self, Inter:Interaction|Context,op: str):
         player:lavalink.models.DefaultPlayer = self.bot.lavalink.player_manager.get(Inter.guild.id)
         emed = nextcord.Embed(color=0xff470b)
+        if player is None:
+            emed.title =f'ให้ฉันเข้าก่อนสิ'
+            await Inter.send(embed=emed)
+            return
+        
         emed.title = 'clear แล้วจ้า'
         
         if op=="all":

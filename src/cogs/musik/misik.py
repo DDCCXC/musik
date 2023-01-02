@@ -33,7 +33,7 @@ class Musik(Cog):
     
     async def join_to_channel(self, Inter:Interaction|commands.context.Context)->bool:
         await join(self,Inter)
-        
+    
     async def disconnect(self, Inter:Interaction|commands.context.Context):
         await disconnect(self,Inter)
 
@@ -72,15 +72,20 @@ class Musik(Cog):
         
     async def info_filters(self, Inter:Interaction|commands.context.Context):
         await check(self,Inter)
-    
-    async def bb(self, Inter:Interaction|commands.context.Context,gain: float):
-        await equalizer_controller(self,Inter,gain)
+        
+    async def bb(self, Inter:Interaction|commands.context.Context,brond:int,gain: float|str):
+        await equalizer(self,Inter,brond,gain)  
         
     async def timescale(self, Inter:Interaction|commands.context.Context,speed: float,pitch: float,rate: float):
         await timescale(self,Inter,speed,pitch,rate)
         
     async def karaoke(self, Inter:Interaction|commands.context.Context,level: float,monoLevel: float,filterBand: float,filterWidth: float):
         await karaoke(self,Inter,level,monoLevel,filterBand,filterWidth) 
+        
+    async def kalevel(self, Inter:Interaction|commands.context.Context,ty:str,level: float):
+        await custon_karaoke(self,Inter,ty,level)
+        
+   
         
     async def rotation(self, Inter:Interaction|commands.context.Context,rotation_hz: float):
         await rotation(self,Inter,rotation_hz) 

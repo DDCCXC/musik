@@ -39,10 +39,12 @@ class music_command(Cog):
         
     @basic.subcommand(name="now", description="Asdasd")
     async def now(self, inter: Interaction) -> None:
+        await inter.response.defer()
         await self.player.now(inter) 
  
     @basic.subcommand(name="queue", description="Asdasd")
     async def queue(self, inter: Interaction) -> None:
+        await inter.response.defer()
         await self.player.queue(inter)     
         
     @basic.subcommand(name="remove", description="Asdasd")
@@ -67,6 +69,7 @@ class music_command(Cog):
     
     @basic.subcommand(name="info_filters", description="Asdasd")
     async def info_filters(self, inter: Interaction) -> None:
+        await inter.response.defer()
         await self.player.info_filters(inter)      
         
     # filters
@@ -75,9 +78,10 @@ class music_command(Cog):
     
     # bass
     @filters.subcommand(name="bassboost", description="Asdasd")
-    async def bassboost(self, inter: Interaction,gain:float = nextcord.SlashOption(min_value=-0.25 ,max_value=1.00) ) -> None:
-        await self.player.bb(inter,gain)
-        
+    async def bassboost(self, inter: Interaction
+                        ,bands=nextcord.SlashOption(name="bands",choices=[str(x) for x in range(15)],default="all")
+                        ,gain:float = nextcord.SlashOption(min_value=-0.25 ,max_value=1.00,default=0) ) -> None:
+        await self.player.bb(inter,bands,gain)  
     # Timescale
     @filters.subcommand(name="timescale", description="Asdasd")
     async def timescale(self, inter: Interaction,speed:float = nextcord.SlashOption(min_value=0.1,default=1),pitch:float = nextcord.SlashOption(min_value=0.1,default=1),rate:float = nextcord.SlashOption(min_value=0.1,default=1)) -> None:
@@ -92,16 +96,16 @@ class music_command(Cog):
         
     @filters.subcommand(name="level", description="Asdasd")
     async def level(self, inter: Interaction,level:float = nextcord.SlashOption(min_value=0.1)) -> None:
-        await self.player.bb(inter,level)
+        await self.player.kalevel(inter,"level",level)
     @filters.subcommand(name="monolevel", description="Asdasd")
     async def monolevel(self, inter: Interaction,monolevel:float = nextcord.SlashOption(min_value=0.1)) -> None:
-        await self.player.bb(inter,monolevel)
+        await self.player.kalevel(inter,"monolevel",monolevel)
     @filters.subcommand(name="filterband", description="Asdasd")
     async def filterband(self, inter: Interaction,filterband:float = nextcord.SlashOption(min_value=0.1)) -> None:
-        await self.player.bb(inter,filterband)
+        await self.player.kalevel(inter,"filterband",filterband)
     @filters.subcommand(name="filterwidth", description="Asdasd")
     async def filterwidth(self, inter: Interaction,filterwidth:float = nextcord.SlashOption(min_value=0.1)) -> None:
-        await self.player.bb(inter,filterwidth)
+        await self.player.kalevel(inter,"filterwidth",filterwidth)
         
     # Tremolo
     @filters.subcommand(name="tremolo", description="Asdasd")

@@ -3,7 +3,9 @@ from nextcord.ext.commands.context import Context
 import nextcord,asyncio,lavalink
 
 async def Vibrato(self,ctx,depth:float,frequency:float):
+        
         player:lavalink.models.DefaultPlayer = self.bot.lavalink.player_manager.get(ctx.guild.id)
+        if not await self.check_join(ctx,player):return
         embed = nextcord.Embed(colour=0xdc4700)
         Vibrato = lavalink.Vibrato()
       
@@ -15,6 +17,7 @@ async def Vibrato(self,ctx,depth:float,frequency:float):
         
 async def Tremolo(self,ctx,depth:float,frequency:float):
         player:lavalink.models.DefaultPlayer = self.bot.lavalink.player_manager.get(ctx.guild.id)
+        if not await self.check_join(ctx,player):return
         embed = nextcord.Embed(colour=0xdc4700)
         Tremolo = lavalink.Tremolo()
       
