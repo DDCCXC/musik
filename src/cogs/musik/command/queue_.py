@@ -80,7 +80,7 @@ async def queue(self, ctx: Interaction | Context):
         if not player.queue:
             embed.title =f'คิวว่างจ้า'
             await ctx.send(embed=embed)
-        
+            return
         items_per_page = 10
         pages = math.ceil(len(player.queue) / items_per_page)
         page=1
@@ -88,11 +88,12 @@ async def queue(self, ctx: Interaction | Context):
         end = start + items_per_page
 
         queue_list = ''
+        
         for index, track in enumerate(player.queue[start:end], start=start):
-            queue_list += f'**{index + 1}** : [**{track.title}**]({track.uri})\n'
-
-        embed.description(f'คิวเพลงทั้งหมด **{len(player.queue)} tracks**\n\n{queue_list}')
+            queue_list += f'**{index + 1}** : [**{track.title }**]({track.uri})\n'
+        embed = nextcord.Embed(colour=0xff470b,description=f'คิวเพลงทั้งหมด **{len(player.queue)} tracks**\n\n{queue_list}')
         embed.set_footer(text=f'คุณอยู่หน้าที่ {page}/{pages}')
         btn=_btn(player,ctx.user if type(ctx) is Interaction else ctx.author)
         a=await ctx.send(embed=embed,view=btn)
         btn.set_message(a)
+        return

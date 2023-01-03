@@ -10,6 +10,7 @@ URL_RX = re.compile(r'https?://(?:www\.)?.+')
 class Musik(Cog):
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
+        self.cache=None
         self.bot.lavalink:lavalink.Client
         if not hasattr(bot, 'lavalink'):  
             
@@ -19,10 +20,14 @@ class Musik(Cog):
         lavalink.add_event_hook(self.track_hook)
         
     async def track_hook(self, event):
+        if isinstance(event, lavalink.events.TrackEndEvent):
+            if event.player.auto_play:
+                return await auto_play(self,event.player)
         if isinstance(event, lavalink.events.QueueEndEvent):
             guild_id = event.player.guild_id
             guild = self.bot.get_guild(guild_id)
             await guild.voice_client.disconnect(force=True)
+                
             
     def unload(self):
         self.bot.lavalink._event_hooks.clear()
@@ -106,7 +111,12 @@ class Musik(Cog):
         await frequency_(self,Inter,frequency,ty)
         
     async def clean(self, Inter:Interaction|commands.context.Context,op:str):
-        await clear(self,Inter,op)  
+        await clear(self,Inter,op) 
+
+    async def set_auto_play(self, player):
+        await set_auto_play(self,player) 
+    async def auto_play(self, Inter:Interaction|commands.context.Context,player):
+        await auto_play(Inter,player) 
         
 def setup(bot: Bot) -> None:
     bot.add_cog(Musik(bot))

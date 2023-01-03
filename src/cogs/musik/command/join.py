@@ -21,7 +21,8 @@ async def join(self,ctx:Interaction|Context):
         if not permissions.connect or not permissions.speak:  # Check user limit too?
                 return False
         player.store('channel', ctx.channel.id)
-        await author.voice.channel.connect(cls=pyer)
+        ca=await author.voice.channel.connect(cls=pyer)
+        await ctx.channel.guild.change_voice_state(channel=ca.channel, self_deaf=True)
         await ctx.send(embed=embed)
         return True
     else:

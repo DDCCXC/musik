@@ -70,8 +70,11 @@ class music_command(Cog):
     @basic.subcommand(name="info_filters", description="Asdasd")
     async def info_filters(self, inter: Interaction) -> None:
         await inter.response.defer()
-        await self.player.info_filters(inter)      
-        
+        await self.player.info_filters(inter)  
+            
+    @basic.subcommand(name="auto_play", description="Asdasd")
+    async def auto_play (self, inter: Interaction) -> None:
+        await self.player.set_auto_play(inter)
     # filters
     @misik.subcommand()
     async def filters(self,inter: nextcord.Interaction):...

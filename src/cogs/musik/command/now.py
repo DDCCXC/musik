@@ -24,5 +24,7 @@ async def now(self, Inter):
         embed.add_field(name='ศิลปิน',value=f'{player.current.author}',inline=False)
         embed.add_field(name='ระยะเวลา',value=f'{position} / {duration}',inline=False)
         embed.add_field(name='ผู้ขอเพลง',value=f'<@{player.current.requester}>',inline=False)
-        embed.set_thumbnail(url="https://img.youtube.com/vi/{}/default.jpg".format(player.current.identifier))
+        embed.add_field(name='แหล่งที่มา',value=f'{player.current.source_name}',inline=False)
+        if player.current.source_name== 'youtube':
+            embed.set_thumbnail(url="https://img.youtube.com/vi/{}/default.jpg".format(player.current.identifier))
         await Inter.send(embed=embed)
