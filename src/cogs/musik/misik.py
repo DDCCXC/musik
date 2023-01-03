@@ -20,13 +20,16 @@ class Musik(Cog):
         lavalink.add_event_hook(self.track_hook)
         
     async def track_hook(self, event):
+        print(event)
+        
         if isinstance(event, lavalink.events.TrackEndEvent):
             if event.player.auto_play:
-                return await auto_play(self,event.player)
+                return await auto_play(self,event.player)  
+            guild = self.bot.get_guild(event.player.guild_id)
+            return await guild.voice_client.disconnect(force=True)
         if isinstance(event, lavalink.events.QueueEndEvent):
-            guild_id = event.player.guild_id
-            guild = self.bot.get_guild(guild_id)
-            await guild.voice_client.disconnect(force=True)
+            guild = self.bot.get_guild(event.player.guild_id)
+            return await guild.voice_client.disconnect(force=True)
                 
             
     def unload(self):

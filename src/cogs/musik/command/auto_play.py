@@ -19,5 +19,9 @@ async def set_auto_play(self, Inter):
 async def auto_play(self,player):
       cache=self.cache if player.current is None else player.current
       results = await player.node.get_tracks(f"https://www.youtube.com/watch?v={cache.identifier}&list=RD{cache.identifier}") 
-      self.cache=results['tracks'][1]
+      if results['tracks'][1] is not None:
+          self.cache=results['tracks'][1] 
+      else :
+          results = await player.node.get_tracks(f"https://www.youtube.com/watch?v=WTZ5VSmPU9Q&list=RDWTZ5VSmPU9Q") 
+          self.cache=results['tracks'][1] 
       player.add(requester=0, track=results['tracks'][1])

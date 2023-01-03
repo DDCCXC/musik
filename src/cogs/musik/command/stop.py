@@ -9,9 +9,8 @@ async def stop(self, ctx):
         if not player.is_playing:
             #เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ
             return await ctx.send('> **เพลงไม่ได้ถูกเล่น กรุณลองใหม่อีกครั้ง**')
-
+        player.auto_play = False
         player.queue.clear()
+        embed.title='⏹ หยุดเพลงแล้วค่ะ>_'
         await player.stop()
-        embed.title=\
-                              '⏹ หยุดเพลงแล้วค่ะ>_'
         await ctx.send(embed=embed)
