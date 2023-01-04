@@ -1,6 +1,6 @@
 from nextcord import Interaction
 from nextcord.ext.commands.context import Context
-import nextcord
+import nextcord,asyncio
 async def disconnect(self, Inter:Interaction|Context):
         """ Disconnects the player from the voice channel and clears its queue. """
         player = self.bot.lavalink.player_manager.get(Inter.guild.id)
@@ -22,7 +22,7 @@ async def disconnect(self, Inter:Interaction|Context):
 
         player.queue.clear()
         await player.stop()
-        await self.connect_to(Inter.guild.id, None)
+        asyncio.create_task(self.connect_to(Inter.guild.id, None))
         emed.title = 'อะเคออกไปก็ได้'
         await Inter.send(embed=emed)
 

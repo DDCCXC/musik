@@ -1,4 +1,4 @@
-import nextcord
+import nextcord,asyncio
 async def set_auto_play(self, Inter):
        
         player = self.bot.lavalink.player_manager.get(Inter.guild.id)
@@ -13,7 +13,7 @@ async def set_auto_play(self, Inter):
         
         player.auto_play = not player.auto_play 
         emed.title = f' | auto play :' + ('เปิดใช้งาน' if player.auto_play else 'ปิดใช้งาาน')
-        await auto_play(self,player)
+        asyncio.create_task(auto_play(self,player))
         await Inter.send(embed=emed)
         
 async def auto_play(self,player):
