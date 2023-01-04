@@ -11,6 +11,8 @@ class Ping(Cog):
     @slash_command(name="ping", description="A simple ping command.",force_global=True)
     async def ping(self, inter: Interaction) -> None:
         await inter.send(f"Pong! {self.bot.latency * 1000:.2f}ms")
-   
+    @slash_command(name="help", description="help",force_global=True)
+    async def ping(self, inter: Interaction) -> None:
+        await inter.send(f"help")
 def setup(bot: Bot) -> None:
     bot.add_cog(Ping(bot))

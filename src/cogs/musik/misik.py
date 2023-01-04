@@ -24,10 +24,12 @@ class Musik(Cog):
             if event.player.auto_play:
                 return await auto_play(self,event.player)  
             guild = self.bot.get_guild(event.player.guild_id)
-            return await guild.voice_client.disconnect(force=True)
+            if guild.voice_client is not None:
+                return await guild.voice_client.disconnect(force=True)
         if isinstance(event, lavalink.events.QueueEndEvent):
             guild = self.bot.get_guild(event.player.guild_id)
-            return await guild.voice_client.disconnect(force=True)
+            if guild.voice_client is not None:
+                return await guild.voice_client.disconnect(force=True)
                 
             
     def unload(self):
