@@ -1,4 +1,4 @@
-import nextcord
+import nextcord,asyncio
 
 async def skip(self, Inter):
     player = self.bot.lavalink.player_manager.get(Inter.guild.id)
@@ -11,5 +11,5 @@ async def skip(self, Inter):
         emed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
         return await Inter.send(embed=emed)
     emed.title = 'ข้ามให้แล้วน้า'
-    await player.skip()
+    asyncio.create_task(player.skip())
     await Inter.send(embed=emed)

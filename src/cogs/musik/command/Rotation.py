@@ -13,5 +13,5 @@ async def rotation(self,ctx,r:float):
         rotation = lavalink.Rotation()
         embed.title =f'คุณได้ปรับระดับtimescaleแล้วจ้า'
         rotation.update(rotation_hz=r)
-        await player.set_filter(rotation)    
+        asyncio.create_task(player.set_filter(rotation))    
         await ctx.send(embed=embed)

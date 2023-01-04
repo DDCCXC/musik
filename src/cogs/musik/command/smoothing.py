@@ -10,7 +10,7 @@ async def smoothing(self,ctx,smoothing:float):
             await ctx.send(embed=embed)
             return
         LowPass = lavalink.LowPass()
-        embed.title =f'คุณได้ปรับระดับtimescaleแล้วจ้า'
+        embed.title =f'คุณได้ปรับระดับsmoothingแล้วจ้า'
         LowPass.update(rotation_hz=smoothing)
-        await player.set_filter(LowPass)    
+        asyncio.create_task(player.set_filter(LowPass))    
         await ctx.send(embed=embed)

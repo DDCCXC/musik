@@ -13,6 +13,6 @@ async def timescale(self,ctx,speed:float,pitch:float,rate:float):
       
         embed.title =f'คุณได้ปรับระดับtimescaleแล้วจ้า'
         Timescale.update(speed=speed,pitch=pitch,rate=rate)
-        await player.set_filter(Timescale)
+        asyncio.create_task(player.set_filter(Timescale))
             
         await ctx.send(embed=embed)

@@ -14,7 +14,7 @@ async def Vibrato(self,ctx,depth:float,frequency:float):
       
         embed.title =f'คุณได้ปรับระดับtimescaleแล้วจ้า'
         Vibrato.update(depth=depth,frequency=frequency)
-        await player.set_filter(Vibrato)
+        asyncio.create_task(player.set_filter(Vibrato))
             
         await ctx.send(embed=embed)
         
@@ -33,7 +33,7 @@ async def depth_(self,ctx,depth:float,yp:str):
             Vibrato = lavalink.Tremolo()
             embed.title =f'คุณได้ปรับระดับTremolo-depthแล้วจ้า'
         Vibrato.update(depth=depth)
-        await player.set_filter(Vibrato)
+        asyncio.create_task(player.set_filter(Vibrato))
             
         await ctx.send(embed=embed)
 async def frequency_(self,ctx,frequency:float,yp:str):
@@ -51,7 +51,7 @@ async def frequency_(self,ctx,frequency:float,yp:str):
             Vibrato = lavalink.Tremolo()
             embed.title =f'คุณได้ปรับระดับTremolo-frequencyแล้วจ้า'
         Vibrato.update(frequency=frequency)
-        await player.set_filter(Vibrato)
+        asyncio.create_task(player.set_filter(Vibrato))
             
         await ctx.send(embed=embed)
         
@@ -66,6 +66,6 @@ async def Tremolo(self,ctx,depth:float,frequency:float):
       
         embed.title =f'คุณได้ปรับระดับtimescaleแล้วจ้า'
         Tremolo.update(depth=depth,frequency=frequency)
-        await player.set_filter(Tremolo)
+        asyncio.create_task(player.set_filter(Tremolo))
             
         await ctx.send(embed=embed)

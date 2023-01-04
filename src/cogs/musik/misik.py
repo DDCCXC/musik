@@ -24,7 +24,7 @@ class Musik(Cog):
             if event.player.auto_play:
                 return await auto_play(self,event.player)  
             guild = self.bot.get_guild(event.player.guild_id)
-            if guild.voice_client is not None:
+            if guild.voice_client is not None and not event.player.queue:
                 return await guild.voice_client.disconnect(force=True)
         if isinstance(event, lavalink.events.QueueEndEvent):
             guild = self.bot.get_guild(event.player.guild_id)
@@ -81,7 +81,7 @@ class Musik(Cog):
     async def info_filters(self, Inter:Interaction|commands.context.Context):
         await check(self,Inter)
         
-    async def bb(self, Inter:Interaction|commands.context.Context,brond:int,gain: float|str):
+    async def bb(self, Inter:Interaction|commands.context.Context,brond:int|str,gain: float):
         await equalizer(self,Inter,brond,gain)  
         
     async def timescale(self, Inter:Interaction|commands.context.Context,speed: float,pitch: float,rate: float):

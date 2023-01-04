@@ -14,7 +14,7 @@ async def play(self, Inter:Interaction|Context, query: str):
         # https://www.youtube.com/watch?v=QjQliDFIsnk&list=RDQjQliDFIsnk
         else:
             if "playlist" in query:
-                a=query.replace("www.",'').replace("https://youtube.com/playlist?list=",'').replace("&playnext=1","").replace("RD",'')
+                a=query.replace("www.",'').replace("https://playlist?list=RD",'').replace("&playnext=1","")
                 query=f"https://www.youtube.com/watch?v={a}&list=RD{a}"
         results = await player.node.get_tracks(query)
         embed.title = 'หาเพลงไม่เจอค่ะ'

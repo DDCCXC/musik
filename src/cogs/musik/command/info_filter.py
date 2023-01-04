@@ -11,7 +11,18 @@ async def check(self, ctx):
         med.title = 'check'
        
         med.add_field(name='volume', value=f'{player.volume}')
-        for i in player.filters:
-                med.add_field(name=i, value=f'{player.filters[i]}',inline=False)
+        for i,f in player.filters.items():
+                v=''
+                
+                (_, filter), *_=f.serialize().items()
+                
+                
+                if type(filter) == dict:
+                        for x,y in  filter.items() :
+                                v+=f"{x}: {y} "
+                else:
+                        for x in  filter:
+                                v+=f"{x['band']}: {x['gain']} ,"
+                med.add_field(name=i, value=f'{v}',inline=False)
         return await ctx.followup.send(embed=med)
         

@@ -1,4 +1,4 @@
-import nextcord
+import nextcord,asyncio
 async def stop(self, ctx):
         player = self.bot.lavalink.player_manager.get(ctx.guild.id)
         embed = nextcord.Embed(color=0xff470b)
@@ -12,5 +12,5 @@ async def stop(self, ctx):
         player.auto_play = False
         player.queue.clear()
         embed.title='⏹ หยุดเพลงแล้วค่ะ>_'
-        await player.stop()
+        asyncio.create_task(player.stop())
         await ctx.send(embed=embed)
