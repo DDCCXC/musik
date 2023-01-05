@@ -35,7 +35,6 @@ class _btn(nextcord.ui.View):
             if interaction.user in self.MemberVoted or interaction.user in self.MemberVotedNot:
                 await interaction.send(f'{interaction.user.mention}vote แล้วนิ',ephemeral=True)
             else:
-                print(self.MemberInVc ,len(self.MemberVoted))
                 if self.MemberInVc <= len(self.MemberVoted):
                     self.stop()
                     self.vote=False

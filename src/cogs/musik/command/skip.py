@@ -9,9 +9,7 @@ async def skip(self, Inter):
             emed.title =f'ให้ฉันเข้าก่อนสิ'
             await Inter.send(embed=emed)
             return
-    vote=await self.vote_(Inter)
-    print(vote)
-    if vote:
+    if await self.vote_(Inter):
         emed.title =f'ไม่เอิ้กๆ'
         await Inter.send(embed=emed)
         return
