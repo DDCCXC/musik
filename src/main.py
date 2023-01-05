@@ -13,4 +13,5 @@ if __name__ == "__main__":
     bot.load_extension("cogs.music")
     bot.load_extension("cogs.test")
     bot.load_extension("cogs.setup")
+    bot.load_extension("cogs.events")
     bot.run(os.getenv("DISCORD_TOKEN"), reconnect=True)

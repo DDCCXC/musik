@@ -12,7 +12,7 @@ class setup_commands(Cog):
     @setup.subcommand()
     async def muzik(self,inter: nextcord.Interaction):...
     
-    @muzik.subcommand(name="create_role-dj", description="Asdasd")
+    @muzik.subcommand(name="create-role-dj", description="Asdasd")
     async def create_Dj(self, inter: Interaction,role:nextcord.Role=nextcord.SlashOption(name="role",default=None)) -> None:
         await create_DJ(inter,role,guild)
 def setup(bot: AutoShardedBot) -> None:

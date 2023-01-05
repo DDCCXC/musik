@@ -23,16 +23,17 @@ from .auto_play import *
 from .vote import *
 from nextcord import Interaction, slash_command
 from nextcord.ext import commands
-from nextcord.ext.commands import Bot
+from nextcord.ext.commands import AutoShardedBot
 from musik import player as pyer
 import lavalink,re
 
 URL_RX = re.compile(r'https?://(?:www\.)?.+')
 class Musik():
-    def __init__(self, bot: Bot) -> None:
+    def __init__(self, bot: AutoShardedBot,guild_coll) -> None:
         self.bot = bot
         self.cache=None
         self.bot.lavalink:lavalink.Client
+        self.guild=guild_coll
         if not hasattr(bot, 'lavalink'):  
             
             self.bot.lavalink:lavalink.Client = lavalink.Client(1054981299334549514)
@@ -142,4 +143,4 @@ class Musik():
     async def auto_play(self, Inter:Interaction|commands.context.Context,player):
         await auto_play(Inter,player) 
     async def vote_(self, Inter:Interaction|commands.context.Context):
-        return await vote(Inter) 
+        return await vote(Inter,self.guild) 

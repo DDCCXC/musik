@@ -1,11 +1,13 @@
 from nextcord import Interaction, slash_command
 from nextcord.ext.commands import Cog,AutoShardedBot
 from commands.music_command import Musik
+from database import guild as guild_collet
 import nextcord
 class music_commands(Cog):
     def __init__(self, bot: AutoShardedBot) -> None:
         self.bot = bot
-        self.player =Musik(bot)
+        self.player =Musik(bot,guild_collet)
+        
 
     # basic
     @slash_command(force_global=True)
