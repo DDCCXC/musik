@@ -44,7 +44,6 @@ class _btn(nextcord.ui.View):
 
 async def vote(inter:Interaction,guild_collet)->bool:
     user=[]
-    print(inter.guild.id)
     f=await guild_collet.find_one({"guild": inter.guild.id})
     if f is not None or inter.user.get_role(f['DJ_Role']) is not None:
         return False
