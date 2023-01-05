@@ -1,7 +1,5 @@
-from nextcord.ext import commands
-import lavalink
+import lavalink,nextcord
 from nextcord.ext.commands import Bot
-import nextcord
 class player(nextcord.VoiceClient):
     def __init__(self, client:Bot, channel: nextcord.abc.Connectable) -> None:
         self.client = client
@@ -66,4 +64,3 @@ class player(nextcord.VoiceClient):
         player.channel_id = None
         self.cleanup()
         
-    

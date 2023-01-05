@@ -41,16 +41,22 @@ class _btn(nextcord.ui.View):
                 elif self.MemberInVc <= len(self.MemberVotedNot):
                     self.stop()
                 return True
+
 async def vote(Inter:Interaction)->bool:
-    
-    real_member_in_vc=len(Inter.user.voice.channel.members)-1
-    
+    user=[]
+    for i,k in Inter.user.voice.channel.voice_states.items():
+        if k.channel and k.channel.id == Inter.user.voice.channel.id:
+            member = Inter.user.voice.channel.guild.get_member(i)
+            if member is not None and not member.bot:
+                user.append(member)
+    real_member_in_vc=len(user)//2
     embed=nextcord.Embed(color=0xff470b)
-    if real_member_in_vc//2 <=1:
+    if real_member_in_vc <=1:
         return False
-    
-    embed.title=f"vote 1/{real_member_in_vc//2}"
-    vote_view=_btn(real_member_in_vc//2,Inter.user)
+    if real_member_in_vc >=20:
+        real_member_in_vc=20
+    embed.title=f"vote 1/{real_member_in_vc}"
+    vote_view=_btn(real_member_in_vc,Inter.user)
     a=await Inter.send(embed=embed,view=vote_view)
     vote_view.set_message(a)
     await vote_view.wait()

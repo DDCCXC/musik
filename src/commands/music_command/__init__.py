@@ -1,13 +1,34 @@
+from .join import *
+from .play import *
+from .disconnect import *
+from .skip import *
+from .stop import *
+from .pause import *
+from .now import *
+from .shuffle import *
+from .repeat import *
+from .remove import *
+from .seek import *
+from .volume import *
+from .queue_ import *
+from .info_filter import *
+from .filter_equalizer import *
+from .timescale import *
+from .karaoke import *
+from .Rotation import *
+from .smoothing import *
+from .TV import *
+from .clean import*
+from .auto_play import *
+from .vote import *
 from nextcord import Interaction, slash_command
 from nextcord.ext import commands
-from nextcord.ext.commands import Bot, Cog
-from . import player as pyer
-from .command import *
-import lavalink,nextcord,re,time
-TESTING_GUILD_ID = 1054648673855868978
+from nextcord.ext.commands import Bot
+from musik import player as pyer
+import lavalink,re
 
 URL_RX = re.compile(r'https?://(?:www\.)?.+')
-class Musik(Cog):
+class Musik():
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
         self.cache=None
@@ -122,5 +143,3 @@ class Musik(Cog):
         await auto_play(Inter,player) 
     async def vote_(self, Inter:Interaction|commands.context.Context):
         return await vote(Inter) 
-def setup(bot: Bot) -> None:
-    bot.add_cog(Musik(bot))

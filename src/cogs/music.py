@@ -1,9 +1,9 @@
 from nextcord import Interaction, slash_command
-from nextcord.ext.commands import Bot, Cog
-from .musik import Musik
+from nextcord.ext.commands import Cog,AutoShardedBot
+from commands.music_command import Musik
 import nextcord
-class music_command(Cog):
-    def __init__(self, bot: Bot) -> None:
+class music_commands(Cog):
+    def __init__(self, bot: AutoShardedBot) -> None:
         self.bot = bot
         self.player =Musik(bot)
 
@@ -162,24 +162,7 @@ class music_command(Cog):
         await self.player.clean(inter,op)
     
     
+
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-def setup(bot: Bot) -> None:
-    bot.add_cog(music_command(bot))
+def setup(bot: AutoShardedBot) -> None:
+    bot.add_cog(music_commands(bot))

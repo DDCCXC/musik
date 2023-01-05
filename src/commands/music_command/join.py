@@ -1,4 +1,4 @@
-from .. import player as pyer
+from musik import player as pyer
 from nextcord import Interaction
 from nextcord.ext.commands.context import Context
 import nextcord
