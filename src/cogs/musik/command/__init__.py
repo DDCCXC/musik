@@ -20,3 +20,4 @@ from .smoothing import *
 from .TV import *
 from .clean import*
 from .auto_play import *
+from .vote import *

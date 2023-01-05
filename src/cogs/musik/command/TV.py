@@ -10,6 +10,10 @@ async def Vibrato(self,ctx,depth:float,frequency:float):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
             return
+        if not await self.vote_(ctx):
+            embed.title =f'ไม่เอิ้กๆ'
+            await embed.send(embed=embed)
+            return
         Vibrato = lavalink.Vibrato()
       
         embed.title =f'คุณได้ปรับระดับtimescaleแล้วจ้า'
@@ -25,6 +29,10 @@ async def depth_(self,ctx,depth:float,yp:str):
         if player is None:
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
+            return
+        if not await self.vote_(ctx):
+            embed.title =f'ไม่เอิ้กๆ'
+            await embed.send(embed=embed)
             return
         if yp=="Vibrato":
             Vibrato = lavalink.Vibrato()
@@ -44,6 +52,10 @@ async def frequency_(self,ctx,frequency:float,yp:str):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
             return
+        if not await self.vote_(ctx):
+            embed.title =f'ไม่เอิ้กๆ'
+            await embed.send(embed=embed)
+            return
         if yp=="Vibrato":
             Vibrato = lavalink.Vibrato()
             embed.title =f'คุณได้ปรับระดับVibrato-frequencyแล้วจ้า'
@@ -61,6 +73,10 @@ async def Tremolo(self,ctx,depth:float,frequency:float):
         if player is None:
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
+            return
+        if not await self.vote_(ctx):
+            embed.title =f'ไม่เอิ้กๆ'
+            await embed.send(embed=embed)
             return
         Tremolo = lavalink.Tremolo()
       

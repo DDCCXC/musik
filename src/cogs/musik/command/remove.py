@@ -8,10 +8,14 @@ async def remove(self, Inter, index: int):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await Inter.send(embed=embed)
             return
+        
         if not player.is_playing:
                 emed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
                 return await Inter.send(embed=emed)
-        
+        if not await self.vote_(Inter):
+            embed.title =f'ไม่เอิ้กๆ'
+            await embed.send(embed=embed)
+            return
 
         if index > len(player.queue) or index < 1:
             emed.title = f'> **กรุณเลือกเพลงระหว่าง **between** 1 - {len(player.queue)}**'

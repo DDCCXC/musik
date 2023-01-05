@@ -9,6 +9,10 @@ async def smoothing(self,ctx,smoothing:float):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
             return
+        if not await self.vote_(ctx):
+            embed.title =f'ไม่เอิ้กๆ'
+            await embed.send(embed=embed)
+            return
         LowPass = lavalink.LowPass()
         embed.title =f'คุณได้ปรับระดับsmoothingแล้วจ้า'
         LowPass.update(rotation_hz=smoothing)

@@ -2,17 +2,21 @@ import nextcord,lavalink
 # TODO repeat had update
 async def repeat(self, Inter,type:int):
         player:lavalink.models.DefaultPlayer  = self.bot.lavalink.player_manager.get(Inter.guild.id)
-        emed = nextcord.Embed(color=0xff470b)
+        embed = nextcord.Embed(color=0xff470b)
         if player is None:
-            emed.title =f'ให้ฉันเข้าก่อนสิ'
-            await Inter.send(embed=emed)
+            embed.title =f'ให้ฉันเข้าก่อนสิ'
+            await Inter.send(embed=embed)
+            return
+        if not await self.vote_(Inter):
+            embed.title =f'ไม่เอิ้กๆ'
+            await Inter.send(embed=embed)
             return
         if not player.is_playing:
-                emed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
-                return await Inter.send(embed=emed)
+                embed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
+                return await Inter.send(embed=embed)
         player.set_loop(type)
         match type:
-                case 0:emed.title = f'> 🔁 | loop : close'
-                case 1:emed.title = f'> 🔁 | loop : {player.current.title}'
-                case 2:emed.title = f'> 🔁 | loop : tracks'
-        await Inter.send(embed=emed)
+                case 0:embed.title = f'> 🔁 | loop : close'
+                case 1:embed.title = f'> 🔁 | loop : {player.current.title}'
+                case 2:embed.title = f'> 🔁 | loop : tracks'
+        await Inter.send(embed=embed)

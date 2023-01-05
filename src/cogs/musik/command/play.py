@@ -9,9 +9,6 @@ async def play(self, Inter:Interaction|Context, query: str):
         embed = nextcord.Embed(color=0xdc4700)
         if not URL_RX.match(query):
             query = f'ytsearch:{query}'
-        # https://www.youtube.com/watch?v=QjQliDFIsnk&list=RDQjQliDFIsnk&index=2
-        # https://www.youtube.com/playlist?list=RDQjQliDFIsnk&playnext=1
-        # https://www.youtube.com/watch?v=QjQliDFIsnk&list=RDQjQliDFIsnk
         else:
             if "playlist" in query:
                 a=query.replace("www.",'').replace("https://playlist?list=RD",'').replace("&playnext=1","")

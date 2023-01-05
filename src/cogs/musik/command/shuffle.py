@@ -7,6 +7,10 @@ async def shuffle(self, Inter):
             emed.title =f'ให้ฉันเข้าก่อนสิ'
             await Inter.send(embed=emed)
             return
+        if not await self.vote_(Inter):
+            emed.title =f'ไม่เอิ้กๆ'
+            await emed.send(embed=emed)
+            return
         if not player.is_playing:
                                 emed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
                                 return await Inter.send(embed=emed)

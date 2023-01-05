@@ -3,19 +3,21 @@ from nextcord.ext.commands.context import Context
 import nextcord,lavalink,asyncio
 async def clear(self, Inter:Interaction|Context,op: str):
         player:lavalink.models.DefaultPlayer = self.bot.lavalink.player_manager.get(Inter.guild.id)
-        emed = nextcord.Embed(color=0xff470b)
+        embed = nextcord.Embed(color=0xff470b)
         if player is None:
-            emed.title =f'ให้ฉันเข้าก่อนสิ'
-            await Inter.send(embed=emed)
+            embed.title =f'ให้ฉันเข้าก่อนสิ'
+            await Inter.send(embed=embed)
             return
         
-        emed.title = 'clear แล้วจ้า'
-        
+        embed.title = 'clear แล้วจ้า'
+        if not await self.vote_(Inter):
+            embed.title =f'ไม่เอิ้กๆ'
+            await embed.send(embed=embed)
         if op=="all":
             asyncio.create_task(player.clear_filters())
         elif op in player.filters: 
             asyncio.create_task(player.remove_filter(op))
         else :
-            emed.title = 'คุณแม่งโม้วะ'
+            embed.title = 'คุณแม่งโม้วะ'
         
-        await Inter.send(embed=emed)
+        await Inter.send(embed=embed)

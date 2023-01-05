@@ -120,6 +120,7 @@ class Musik(Cog):
         await set_auto_play(self,player) 
     async def auto_play(self, Inter:Interaction|commands.context.Context,player):
         await auto_play(Inter,player) 
-        
+    async def vote_(self, Inter:Interaction|commands.context.Context):
+        return await vote(Inter) 
 def setup(bot: Bot) -> None:
     bot.add_cog(Musik(bot))

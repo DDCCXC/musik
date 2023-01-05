@@ -24,6 +24,10 @@ async def custon_karaoke(self,ctx,type:str,level:float):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
             return
+        if not await self.vote_(ctx):
+            embed.title =f'ไม่เอิ้กๆ'
+            await embed.send(embed=embed)
+            return
         embed = nextcord.Embed(colour=0xdc4700)
         Timescale = lavalink.Karaoke()
         
