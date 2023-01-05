@@ -2,11 +2,12 @@ from nextcord import Interaction
 import nextcord
 async def set_join(inter: Interaction,channel:nextcord.TextChannel|None,guild):
     if channel is None:
-        channel=await inter.guild.create_text_channel(name="join")
-        await guild.update_one({"guild": inter.guild.id}, {"$set": {"join":{"id_channel":channel.id}}})
+        channel_id= inter.channel_id
+        await guild.update_one({"guild": inter.guild.id}, {"$set": {"join":{"id_channel":channel_id}}})
     else:
-        await guild.update_one({"guild": inter.guild.id}, {"$set": {"join":{"id_channel":channel.id}}})
-    embed=nextcord.Embed(color=0xdc4700,description=f"<#{channel.id}> set join แล้วจ้า")
+        channel_id= channel.id
+        await guild.update_one({"guild": inter.guild.id}, {"$set": {"join":{"id_channel":channel_id}}})
+    embed=nextcord.Embed(color=0xdc4700,description=f"<#{channel_id}> set join แล้วจ้า")
     await inter.send(embed=embed)
     
 async def set_leave(inter: Interaction,channel:nextcord.TextChannel|None,guild):
