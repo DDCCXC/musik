@@ -20,8 +20,9 @@ class setup_commands(Cog):
     @join_leave.subcommand(name="set-join", description="Asdasd")
     async def set_join(self, inter: Interaction,channel:nextcord.TextChannel=nextcord.SlashOption(name="channel",default=None)) -> None:
         await set_join(inter,channel,guild)
+        
     @join_leave.subcommand(name="custom-join", description="Asdasd")
-    async def customj(self, inter: Interaction,contain:str=nextcord.SlashOption(name="contain",
+    async def customjoin(self, inter: Interaction,contain:str=nextcord.SlashOption(name="contain",
     choices=[
         "title",
         "descript",
@@ -33,8 +34,9 @@ class setup_commands(Cog):
         "footer_icon",
         "footer_text"
         ])
-        ,volume:str=nextcord.SlashOption(name="volume")) -> None:
+        ,volume:str=nextcord.SlashOption(name="leave")) -> None:
         await custom(inter,"join",contain,volume,guild)
+        
     @join_leave.subcommand(name="custom-join", description="Asdasd")
     async def customleave(self, inter: Interaction,contain:str=nextcord.SlashOption(name="contain",
     choices=[
@@ -50,8 +52,10 @@ class setup_commands(Cog):
         ])
         ,volume:str=nextcord.SlashOption(name="volume")) -> None:
         await custom(inter,"leave",contain,volume,guild)
+        
     @join_leave.subcommand(name="set-leave", description="Asdasd")
     async def set_leave(self, inter: Interaction,channel:nextcord.TextChannel=nextcord.SlashOption(name="channel",default=None)) -> None:
         await set_leave(inter,channel,guild)
+        
 def setup(bot: AutoShardedBot) -> None:
     bot.add_cog(setup_commands(bot))
