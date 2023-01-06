@@ -69,12 +69,12 @@ class music_commands(Cog):
     async def volume(self, inter: Interaction,volume:int= nextcord.SlashOption(min_value=1,max_value=1000)) -> None:
         await self.player.volume(inter,volume) 
     
-    @basic.subcommand(name="info_filters", description="Asdasd")
+    @basic.subcommand(name="info-filters", description="Asdasd")
     async def info_filters(self, inter: Interaction) -> None:
         await inter.response.defer()
         await self.player.info_filters(inter)  
             
-    @basic.subcommand(name="auto_play", description="Asdasd")
+    @basic.subcommand(name="auto-play", description="Asdasd")
     async def auto_play (self, inter: Interaction) -> None:
         await self.player.set_auto_play(inter)
     # filters

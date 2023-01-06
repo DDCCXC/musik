@@ -56,6 +56,26 @@ class setup_commands(Cog):
     @join_leave.subcommand(name="set-leave", description="Asdasd")
     async def set_leave(self, inter: Interaction,channel:nextcord.TextChannel=nextcord.SlashOption(name="channel",default=None)) -> None:
         await set_leave(inter,channel,guild)
-        
+    
+    @join_leave.subcommand(name="upload-image-join", description="Asdasd")
+    async def upload_image(self, inter: Interaction,contain:str=nextcord.SlashOption(name="contain",
+    choices=[
+        "image",
+        "thumbnail",
+        "auth_icon",
+        "footer_icon",
+        ])
+        ,volume:nextcord.Attachment=nextcord.SlashOption(name="image")) -> None:
+        await download(inter,"join",contain,volume,guild)
+    @join_leave.subcommand(name="upload-image-leave", description="Asdasd")
+    async def upload_image(self, inter: Interaction,contain:str=nextcord.SlashOption(name="contain",
+    choices=[
+        "image",
+        "thumbnail",
+        "auth_icon",
+        "footer_icon",
+        ])
+        ,volume:nextcord.Attachment=nextcord.SlashOption(name="image")) -> None:
+        await download(inter,"leave",contain,volume,guild)
 def setup(bot: AutoShardedBot) -> None:
     bot.add_cog(setup_commands(bot))
