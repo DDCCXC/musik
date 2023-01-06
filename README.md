@@ -33,3 +33,16 @@ Tremolo
 depth
 frequency
 clean
+
+#join-leave
+
+Set-join
+Set-leave
+Custom embed join/leave title description image thumbnail auth footer
+
+Url or upload images
+
+#report message
+
+Set-report-log
+report-message
