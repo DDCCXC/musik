@@ -18,6 +18,8 @@ stop
 pause
 disconnect
 seek
+Dj role
+Vote action 
 
 # filter
 
