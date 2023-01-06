@@ -1,5 +1,5 @@
 
-from nextcord import Interaction, slash_command
+from nextcord import Interaction, slash_command,message_command
 from nextcord.ext.commands import AutoShardedBot, Cog
 from database import guild
 import nextcord
@@ -77,5 +77,14 @@ class setup_commands(Cog):
         ])
         ,volume:nextcord.Attachment=nextcord.SlashOption(name="image")) -> None:
         await download(inter,"leave",contain,volume,guild)
+        
+    @join_leave.subcommand(name="set-report", description="Asdasd")
+    async def set_report(self, inter: Interaction,channel:nextcord.TextChannel=nextcord.SlashOption(name="channel",default=None)) -> None:
+        await set_report(inter,channel,guild)
+        
+    @message_command(name="report", force_global=True)
+    async def report(self, inter: Interaction, message: nextcord.Message) -> None:
+        
+        await report(self,inter,message,guild)
 def setup(bot: AutoShardedBot) -> None:
     bot.add_cog(setup_commands(bot))

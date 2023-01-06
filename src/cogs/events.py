@@ -77,7 +77,8 @@ class all_events(Cog):
         if "join" not in  guild :
             return
         channel=member.guild.get_channel(guild["join"]["id_channel"])
-        
+        if channel is None:
+            return
         await channel.send(embed=create_embed("join",guild["join"].get("embed",None),member))
         
         
@@ -90,7 +91,8 @@ class all_events(Cog):
         if "leave" not in  guild :
             return
         channel=member.guild.get_channel(guild["leave"]["id_channel"])
-        
+        if channel is None:
+            return
         await channel.send(embed=create_embed("leave",guild["leave"].get("embed",None),member))
         
 def setup(bot: AutoShardedBot) -> None:

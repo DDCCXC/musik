@@ -1,4 +1,4 @@
-from nextcord import Interaction, slash_command
+from nextcord import Interaction, slash_command,message_command
 from nextcord.ext.commands import Cog,AutoShardedBot
 from commands.music_command import Musik
 from database import guild as guild_collet
@@ -26,6 +26,10 @@ class music_commands(Cog):
     @basic.subcommand(name="play", description="Asdasd")
     async def play(self, inter: Interaction,query: str) -> None:
         await self.player.play(inter,query)
+        
+    @message_command(name="play", force_global=True)
+    async def play(self, inter: Interaction, message: nextcord.Message) -> None:
+        await self.player.play(inter,message.content)
         
     @basic.subcommand(name="skip", description="Asdasd")
     async def skip(self, inter: Interaction) -> None:
