@@ -9,7 +9,7 @@ def chack_database(clinent):
 
 if __name__ != "__main__":
     CLINENT= motor.motor_asyncio.AsyncIOMotorClient(os.getenv("MONGOURI"), serverSelectionTimeoutMS=5000)
+    CLINENT.get_io_loop = asyncio.get_running_loop
     DATABASE=CLINENT.ngan_song_kru
     GUILD=DATABASE.Guild
-    LANG=DATABASE.Language
-    LAVALINK=DATABASE.lavalink
+    TONTON=DATABASE.tonton
