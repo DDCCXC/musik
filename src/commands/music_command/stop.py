@@ -8,7 +8,7 @@ async def stop(self, ctx):
             return
         if not await self.vote_(ctx):
             embed.title =f'ไม่เอิ้กๆ'
-            await embed.send(embed=embed)
+            await ctx.send(embed=embed)
             return
         if not player.is_playing:
             return await ctx.send('>เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ')
