@@ -10,7 +10,7 @@ async def Vibrato(self,ctx,depth:float,frequency:float):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
             return
-        if not await self.vote_(ctx):
+        if await self.vote_(ctx):
             embed.title =f'ไม่เอิ้กๆ'
             await embed.send(embed=embed)
             return
@@ -30,7 +30,7 @@ async def depth_(self,ctx,depth:float,yp:str):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
             return
-        if not await self.vote_(ctx):
+        if await self.vote_(ctx):
             embed.title =f'ไม่เอิ้กๆ'
             await embed.send(embed=embed)
             return
@@ -52,7 +52,7 @@ async def frequency_(self,ctx,frequency:float,yp:str):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
             return
-        if not await self.vote_(ctx):
+        if await self.vote_(ctx):
             embed.title =f'ไม่เอิ้กๆ'
             await embed.send(embed=embed)
             return
@@ -74,7 +74,7 @@ async def Tremolo(self,ctx,depth:float,frequency:float):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
             return
-        if not await self.vote_(ctx):
+        if await self.vote_(ctx):
             embed.title =f'ไม่เอิ้กๆ'
             await embed.send(embed=embed)
             return

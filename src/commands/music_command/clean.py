@@ -10,7 +10,7 @@ async def clear(self, Inter:Interaction|Context,op: str):
             return
         
         embed.title = 'clear แล้วจ้า'
-        if not await self.vote_(Inter):
+        if await self.vote_(Inter):
             embed.title =f'ไม่เอิ้กๆ'
             await embed.send(embed=embed)
         if op=="all":

@@ -8,7 +8,7 @@ async def seek(self, ctx, seconds: int):
             emed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=emed)
             return
-        if not await self.vote_(ctx):
+        if await self.vote_(ctx):
             emed.title =f'ไม่เอิ้กๆ'
             await emed.send(embed=emed)
             return

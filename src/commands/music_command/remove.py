@@ -12,7 +12,7 @@ async def remove(self, Inter, index: int):
         if not player.is_playing:
                 emed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
                 return await Inter.send(embed=emed)
-        if not await self.vote_(Inter):
+        if await self.vote_(Inter):
             embed.title =f'ไม่เอิ้กๆ'
             await embed.send(embed=embed)
             return

@@ -9,7 +9,7 @@ async def smoothing(self,ctx,smoothing:float):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
             return
-        if not await self.vote_(ctx):
+        if await self.vote_(ctx):
             embed.title =f'ไม่เอิ้กๆ'
             await embed.send(embed=embed)
             return

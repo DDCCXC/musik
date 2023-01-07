@@ -6,7 +6,7 @@ async def stop(self, ctx):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
             return
-        if not await self.vote_(ctx):
+        if await self.vote_(ctx):
             embed.title =f'ไม่เอิ้กๆ'
             await ctx.send(embed=embed)
             return

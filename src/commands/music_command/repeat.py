@@ -7,7 +7,7 @@ async def repeat(self, Inter,type:int):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await Inter.send(embed=embed)
             return
-        if not await self.vote_(Inter):
+        if await self.vote_(Inter):
             embed.title =f'ไม่เอิ้กๆ'
             await Inter.send(embed=embed)
             return
