@@ -35,7 +35,6 @@ class Musik():
         self.bot.lavalink:lavalink.Client
         self.guild=guild_coll
         if not hasattr(bot, 'lavalink'):  
-            
             self.bot.lavalink:lavalink.Client = lavalink.Client(1054981299334549514)
             self.bot.lavalink.add_node('127.0.0.1', 2333, 'thampomungdoo', 'sg', 'default-node')  # Host, Port, Password, Region, Name
 
@@ -61,8 +60,8 @@ class Musik():
         ws = self.bot._connection._get_websocket(guild_id)
         await ws.voice_state(str(guild_id), channel_id)
     
-    async def join_to_channel(self, Inter:Interaction|commands.context.Context)->bool:
-        await join(self,Inter)
+    async def join_to_channel(self, Inter:Interaction|commands.context.Context,type:bool=False)->bool:
+        return await join(self,Inter,type)
     
     async def disconnect(self, Inter:Interaction|commands.context.Context):
         await disconnect(self,Inter)

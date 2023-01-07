@@ -8,8 +8,8 @@ def chack_database(clinent):
         print("error")
 
 if __name__ != "__main__":
-    clinent= motor.motor_asyncio.AsyncIOMotorClient(os.getenv("MONGOURI"), serverSelectionTimeoutMS=5000)
-    database=clinent.ngan_song_kru
-    guild=database.Guild
-    lang=database.Language
-    ll=database.lavalink
+    CLINENT= motor.motor_asyncio.AsyncIOMotorClient(os.getenv("MONGOURI"), serverSelectionTimeoutMS=5000)
+    DATABASE=CLINENT.ngan_song_kru
+    GUILD=DATABASE.Guild
+    LANG=DATABASE.Language
+    LAVALINK=DATABASE.lavalink

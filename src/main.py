@@ -1,12 +1,12 @@
 from nextcord.ext import commands
 import os,nextcord,asyncio
-from database import clinent,chack_database
+from database import CLINENT,chack_database
 from dotenv import load_dotenv
 
 if __name__ == "__main__":
     load_dotenv()
     bot = commands.AutoShardedBot(command_prefix='ax!', intents=nextcord.Intents.all())
-    chack_database(clinent)
+    chack_database(CLINENT)
     @bot.event
     async def on_ready():
         print('Ready!')

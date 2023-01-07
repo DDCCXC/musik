@@ -3,7 +3,9 @@ from nextcord.ext.commands.context import Context
 import lavalink,nextcord,re
 URL_RX = re.compile(r'https?://(?:www\.)?.+')
 async def play(self, Inter:Interaction|Context, query: str):
-        await self.join_to_channel(Inter)
+        state=await self.join_to_channel(Inter)
+        if not state :
+            return
         player:lavalink.models.DefaultPlayer = self.bot.lavalink.player_manager.get(Inter.guild.id)
         query = query.strip('<>')
         embed = nextcord.Embed(color=0xdc4700)

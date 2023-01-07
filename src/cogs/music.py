@@ -1,12 +1,12 @@
 from nextcord import Interaction, slash_command,message_command
 from nextcord.ext.commands import Cog,AutoShardedBot
 from commands.music_command import Musik
-from database import guild as guild_collet
+from database import GUILD
 import nextcord
 class music_commands(Cog):
     def __init__(self, bot: AutoShardedBot) -> None:
         self.bot = bot
-        self.player =Musik(bot,guild_collet)
+        self.player =Musik(bot,GUILD)
         
 
     # basic
@@ -17,7 +17,7 @@ class music_commands(Cog):
     
     @basic.subcommand(name="join", description="Asdasd")
     async def join(self, inter: Interaction) -> None:
-        await self.player.join_to_channel(inter)
+        await self.player.join_to_channel(inter,True)
         
     @basic.subcommand(name="disconnect", description="Asdasd")
     async def disconnect(self, inter: Interaction) -> None:
@@ -28,7 +28,7 @@ class music_commands(Cog):
         await self.player.play(inter,query)
         
     @message_command(name="play", force_global=True)
-    async def play(self, inter: Interaction, message: nextcord.Message) -> None:
+    async def message_play(self, inter: Interaction, message: nextcord.Message) -> None:
         await self.player.play(inter,message.content)
         
     @basic.subcommand(name="skip", description="Asdasd")
