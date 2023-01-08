@@ -1,6 +1,7 @@
 
 from nextcord import Interaction, slash_command,message_command
 from nextcord.ext.commands import AutoShardedBot, Cog
+from nextcord.ext import application_checks
 from database import GUILD
 import nextcord
 from commands.setupa import *
@@ -9,6 +10,7 @@ class setup_commands(Cog):
     def __init__(self, bot: AutoShardedBot) -> None:
         self.bot = bot
     @slash_command(force_global=True)
+    @application_checks.has_permissions(administrator=True)
     async def setup(self,inter: nextcord.Interaction):...
     @setup.subcommand()
     async def create(self,inter: nextcord.Interaction):...
@@ -37,7 +39,7 @@ class setup_commands(Cog):
         "footer_icon",
         "footer_text"
         ])
-        ,volume:str=nextcord.SlashOption(name="leave")) -> None:
+        ,volume:str=nextcord.SlashOption(name="volume")) -> None:
         await custom(inter,"join",contain,volume,GUILD)
         
     @custom.subcommand(name="leave", description="Asdasd")
@@ -81,7 +83,7 @@ class setup_commands(Cog):
         ,volume:nextcord.Attachment=nextcord.SlashOption(name="image")) -> None:
         await download(inter,"leave",contain,volume,GUILD)
         
-    @setup.subcommand(name="set-report", description="Asdasd")
+    @setup.subcommand(name="report", description="Asdasd")
     async def set_report(self, inter: Interaction,channel:nextcord.TextChannel=nextcord.SlashOption(name="channel",default=None)) -> None:
         await set_room("report",inter,channel,GUILD)
     

@@ -12,3 +12,4 @@ if __name__ != "__main__":
     DATABASE=CLINENT.ngan_song_kru
     GUILD=DATABASE.Guild
     TONTON=DATABASE.tonton
+    FEEDBACK=DATABASE.feedback

@@ -8,7 +8,7 @@ if __name__ == "__main__":
     load_dotenv()
     bot = commands.AutoShardedBot(command_prefix='ax!', intents=nextcord.Intents.all())
     chack_database(CLINENT)
-    tonton(os.getenv("YOUTUBE_KEY"),TONTON,GUILD,bot)
+    # tonton(os.getenv("YOUTUBE_KEY"),TONTON,GUILD,bot)
     @bot.event
     async def on_ready():
         print('Ready!')

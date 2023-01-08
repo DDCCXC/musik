@@ -35,7 +35,7 @@ class tonton:
         # app.run(host="0.0.0.0", port=8080)
         serve(app, host='0.0.0.0', port=80)
     # https://pubsubhubbub.appspot.com/
-    # https://www.youtube.com/xml/feeds/videos.xml?channel_id=
+    # https://www.youtube.com/xml/feeds/videos.xml?channel_id=UC4PJv575xLDDwhlkWxai6_Q
     # รอของฟรี รอก็เหี้ยละกูมาแล้ว
     async def send_to_guild_rised_tonton(self,id):
         channel_rised_by_ton = self.guildcollet.find({"2tonton420.id_channel": { "$exists": True }})
