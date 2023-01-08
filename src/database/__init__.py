@@ -4,9 +4,8 @@ def chack_database(clinent):
     try:
         clinent.admin.command("ismaster")
         print("!error")
-    except:
+    except Exception as e:
         print("error")
-
 if __name__ != "__main__":
     CLINENT= motor.motor_asyncio.AsyncIOMotorClient(os.getenv("MONGOURI"), serverSelectionTimeoutMS=5000)
     CLINENT.get_io_loop = asyncio.get_running_loop
