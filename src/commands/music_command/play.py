@@ -19,8 +19,6 @@ async def play(self, Inter:Interaction|Context, query: str):
         embed.title = 'หาเพลงไม่เจอค่ะ'
         if not results or not results['tracks']:
             return await Inter.send(embed=embed)
-
-        # 
         if results['loadType'] == 'PLAYLIST_LOADED':
             tracks = results['tracks']
             for track in tracks:

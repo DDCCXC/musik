@@ -9,13 +9,14 @@ async def skip(self, Inter):
             emed.title =f'ให้ฉันเข้าก่อนสิ'
             await Inter.send(embed=emed)
             return
+    if not player.is_playing:
+        emed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
+        return await Inter.send(embed=emed)
     if await self.vote_(Inter):
         emed.title =f'ไม่เอิ้กๆ'
         await Inter.send(embed=emed)
         return
-    if not player.is_playing:
-        emed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
-        return await Inter.send(embed=emed)
+    
     emed.title = 'ข้ามให้แล้วน้า'
     asyncio.create_task(player.skip())
     await Inter.send(embed=emed)

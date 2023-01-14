@@ -14,14 +14,11 @@ async def equalizer(self,ctx,bands:int|str,gain:float):
         if not player.is_playing:
                                 embed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
                                 return await ctx.send(embed=embed)
-        
         if type(bands)==str:
                 embed.title =f'คุณได้ปรับระดับequalizerอยู่ที่{gain}Hz'
                 equalizer.update(bands=[(x, float(gain)) for x in range(15)])
         else:
                 embed.title =f'คุณได้ปรับระดับequalizer bandที่{bands}เป็น{gain}Hz'
                 equalizer.update(band=bands, gain=float(gain))  
-        
         asyncio.create_task(player.set_filter(equalizer))
-                
         await ctx.send(embed=embed)

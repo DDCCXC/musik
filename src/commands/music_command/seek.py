@@ -3,7 +3,6 @@ import lavalink,asyncio
 async def seek(self, ctx, seconds: int):
         player = self.bot.lavalink.player_manager.get(ctx.guild.id)
         emed = nextcord.Embed(color=0xff470b)
-        
         if player is None:
             emed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=emed)

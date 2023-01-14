@@ -82,7 +82,7 @@ class ChooseView(nextcord.ui.Select):
             case 'massage commands':
                 help_embed.title="massage commands"
                 help_embed.description="คำสั่งข้อความ"
-                help_embed.add_field(name="`/play_from_youtube` ",value="เล่นเพลงจากyoutubeด้วยข้อความ",inline=False)
+                help_embed.add_field(name="`/play` ",value="เล่นเพลงจากyoutubeด้วยข้อความ",inline=False)
                 help_embed.add_field(name="`/report` ",value="รายงานข้อความไม่เหมาะสม",inline=False)
         await interaction.response.edit_message(embed = help_embed)
 class Ping(Cog):
@@ -109,7 +109,7 @@ class Ping(Cog):
         btn.set_message(a)
     @slash_command(name="feedback", description="feedback",force_global=True)
     async def feedback(self, inter: Interaction,feedback:str=nextcord.SlashOption(name="feedback")) -> None:
-        await FEEDBACK.insart_one({"name":inter.user.name,"feedback":feedback})
+        await FEEDBACK.insert_one({"name":inter.user.name,"feedback":feedback})
         await inter.send(f"help")
 def setup(bot: Bot) -> None:
     bot.add_cog(Ping(bot))

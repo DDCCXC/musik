@@ -6,12 +6,12 @@ async def stop(self, ctx):
             embed.title =f'ให้ฉันเข้าก่อนสิ'
             await ctx.send(embed=embed)
             return
+        if not player.is_playing:
+            return await ctx.send('>เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ')
         if await self.vote_(ctx):
             embed.title =f'ไม่เอิ้กๆ'
             await ctx.send(embed=embed)
             return
-        if not player.is_playing:
-            return await ctx.send('>เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ')
         player.auto_play = False
         player.queue.clear()
         embed.title='⏹ หยุดเพลงแล้วค่ะ>_'

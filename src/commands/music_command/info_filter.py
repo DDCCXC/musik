@@ -12,17 +12,11 @@ async def check(self, ctx):
        
         med.add_field(name='volume', value=f'{player.volume}')
         for i,f in player.filters.items():
-                v=''
-                
                 (_, filter), *_=f.serialize().items()
-                
-                
                 if type(filter) == dict:
-                        for x,y in  filter.items() :
-                                v+=f"{x}: {y} "
+                        v=','.join(f"{o[0]}:{o[1]} " for o in filter.items())
                 else:
-                        for x in  filter:
-                                v+=f"{x['band']}: {x['gain']} ,"
+                        v=','.join(f"{x['band']}: {x['gain']} ," for x in  filter)
                 med.add_field(name=i, value=f'{v}',inline=False)
         return await ctx.followup.send(embed=med)
         

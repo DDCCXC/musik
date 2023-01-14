@@ -5,11 +5,10 @@ async def set_auto_play(self, Inter):
         embed = nextcord.Embed(color=0xff470b)
         if player is None:
             embed.title =f'ให้ฉันเข้าก่อนสิ'
-            await Inter.send(embed=embed)
-            return
+            return await Inter.send(embed=embed)
         if await self.vote_(Inter):
             embed.title =f'ไม่เอิ้กๆ'
-            await embed.send(embed=embed)
+            return await embed.send(embed=embed)
         if not player.is_playing:
             embed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
             return await Inter.send(embed=embed)

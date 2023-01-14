@@ -10,7 +10,6 @@ async def pause(self, ctx):
         if not player.is_playing:
             emed.title = 'เฮ้นายน่ะยังไม่ได้เปิดเพลงเลยนะ'
             return await ctx.send(embed=emed)
-
         if player.paused:
             emed.title = 'เน้เล่นเพลงแล้วนะ'
             await player.set_pause(False)

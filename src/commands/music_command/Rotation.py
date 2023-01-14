@@ -12,6 +12,7 @@ async def rotation(self,ctx,r:float):
         if await self.vote_(ctx):
             embed.title =f'ไม่เอิ้กๆ'
             await embed.send(embed=embed)
+            return
         rotation = lavalink.Rotation()
         embed.title =f'คุณได้ปรับระดับtimescaleแล้วจ้า'
         rotation.update(rotation_hz=r)

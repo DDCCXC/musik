@@ -6,13 +6,11 @@ async def clear(self, Inter:Interaction|Context,op: str):
         embed = nextcord.Embed(color=0xff470b)
         if player is None:
             embed.title =f'ให้ฉันเข้าก่อนสิ'
-            await Inter.send(embed=embed)
-            return
-        
-        embed.title = 'clear แล้วจ้า'
+            return await Inter.send(embed=embed)
         if await self.vote_(Inter):
             embed.title =f'ไม่เอิ้กๆ'
             await embed.send(embed=embed)
+        embed.title = 'clear แล้วจ้า'
         if op=="all":
             asyncio.create_task(player.clear_filters())
         elif op in player.filters: 
