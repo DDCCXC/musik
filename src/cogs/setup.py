@@ -2,7 +2,7 @@
 from nextcord import Interaction, slash_command,message_command
 from nextcord.ext.commands import AutoShardedBot, Cog
 from nextcord.ext import application_checks
-from database import GUILD
+from database import GUILD,CAPTCHA
 import nextcord
 from commands.setupa import *
 from events.join_leave import JOIN_LEAVE
@@ -61,7 +61,9 @@ class setup_commands(Cog):
     @setup.subcommand(name="leave", description="Asdasd")
     async def set_leave(self, inter: Interaction,channel:nextcord.TextChannel=nextcord.SlashOption(name="channel",default=None)) -> None:
         await set_room("leave",inter,channel,GUILD)
-    
+    @setup.subcommand(name="captcha", description="Asdasd")
+    async def set_captcha(self, inter: Interaction,channel:nextcord.TextChannel=nextcord.SlashOption(name="channel",default=None)) -> None:
+        await set_captcha("captcha",inter,channel,CAPTCHA,GUILD)
     @custom.subcommand(name="upload-image-join", description="Asdasd")
     async def upload_image(self, inter: Interaction,contain:str=nextcord.SlashOption(name="contain",
     choices=[

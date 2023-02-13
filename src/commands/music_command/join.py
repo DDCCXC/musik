@@ -31,7 +31,7 @@ async def join(self,ctx:Interaction|Context,typ:bool=False)->bool|int:
         await ctx.channel.guild.change_voice_state(channel=ca.channel, self_deaf=True)
         if typ:
             embed.title="มาละจ้า"
-            ctx.send(embed=embed)
+            await ctx.send(embed=embed)
         return True
     else:
         if v_client.channel.id != author.voice.channel.id:

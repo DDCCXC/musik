@@ -1,0 +1,66 @@
+{
+    "help": {
+        "index": {
+            "tittle": "Index",
+            "description": "ดีจ้าเรียกข้าว่ามิช่า"
+        },
+        "music": {
+            "tittle": "music basic",
+            "description": "คำสั่งพื้นฐานเกี่ยวกับเพลง",
+            "field": [
+                "เล่นเพลงจากurl หรือ ชื่อเพลง",
+                "ข้ามเพลงที่เล่นอยู่",
+                "หยุดเพลงที่เล่นอยู่",
+                "พักเพลงที่เล่นอยู่",
+                "ดูข้อมูลเพลงที่เล่นอยู่",
+                "ดูqueue",
+                "loopเพลง โดย\n\t1none คือ ยกเลิกloop\n\t2single คือ loopเพลงเดียว\n\t3queue คือ ทั้งqueue",
+                "สุ่มเพลง",
+                "กอเพลง",
+                "ดูข้อมูลfilter",
+                "สุ่มเพลงจากyoutubeเมื่อไม่มีเพลงเล่นต่อ",
+                "เชิญน้องมิช่าเข้าห้องเพลง",
+                "ไล่น้องมิช่าออกจากห้อง"
+            ]
+        },
+        "filter": {
+            "tittle": "music filter",
+            "description": "คำสั่งfilter คำสั่งชุดนี้จะใช้ยากไปหน่อยน้าคะ",
+            "field": [
+                "bassbost ปรับระดับeq",
+                "ความเร็วเพลง, ระดับเสียง, rate ",
+                "ปรับfilter karaoke",
+                "tremolo",
+                "vibrato",
+                "smoothing",
+                "rotation",
+                "ล้างfilter"
+            ]
+        },
+        "setup": {
+            "tittle": "setup",
+            "description": "คำสั่งsetupเฉพาะadminเท่านั้น",
+            "field": [
+                "สร้างยศDJ",
+                "ทำห้องwelcome",
+                "ทำห้องleave",
+                "ทำห้องรายงาน",
+                "ทำห้องแจ้งเตือนข้อมูลสำคัญ",
+                "customห้องwelcome",
+                "customห้องleave",
+                "custom ภาพห้องwelcome",
+                "custom ภาพห้องleave",
+                "ทดสอบคนเข้า",
+                "ทดสอบคนออก"
+            ]
+        },
+        "message_commands": {
+            "tittle": "massage commands",
+            "description": "คำสั่งข้อความ",
+            "filter": [
+                "เล่นเพลงจากyoutubeด้วยข้อความ",
+                "รายงานข้อความไม่เหมาะสม"
+            ]
+        }
+    }
+}

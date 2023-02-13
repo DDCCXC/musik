@@ -11,10 +11,7 @@ async def play(self, Inter:Interaction|Context, query: str):
         embed = nextcord.Embed(color=0xdc4700)
         if not URL_RX.match(query):
             query = f'ytsearch:{query}'
-        else:
-            if "playlist" in query:
-                a=query.replace("www.",'').replace("https://playlist?list=RD",'').replace("&playnext=1","")
-                query=f"https://www.youtube.com/watch?v={a}&list=RD{a}"
+        
         results = await player.node.get_tracks(query)
         embed.title = 'หาเพลงไม่เจอค่ะ'
         if not results or not results['tracks']:

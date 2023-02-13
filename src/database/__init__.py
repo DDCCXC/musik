@@ -11,5 +11,6 @@ if __name__ != "__main__":
     CLINENT.get_io_loop = asyncio.get_running_loop
     DATABASE=CLINENT.ngan_song_kru
     GUILD=DATABASE.Guild
+    CAPTCHA=DATABASE.captcha
     TONTON=DATABASE.tonton
     FEEDBACK=DATABASE.feedback
