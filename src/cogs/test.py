@@ -57,14 +57,14 @@ class ChooseView(nextcord.ui.Select):
             case 'music filter':
                 help_embed.title="music filter"
                 help_embed.description="คำสั่งfilter คำสั่งชุดนี้จะใช้ยากไปหน่อยน้าคะ"
-                help_embed.add_field(name="`/filters bassboost` {{bands [0-14]}} {{gain [-0.25 - 1]}}",value="คำสั่งเล่นเพลง",inline=False)
-                help_embed.add_field(name="`/filters timescale` {{speed >1}} {{pitch >1}} {{rate >1}}",value="คำสั่งเล่นเพลง",inline=False)
-                help_embed.add_field(name="`/filters karaoke` {{level}} {{monolevel}} {{filterband}} {{filterwidth}}",value="คำสั่งเล่นเพลง",inline=False)
-                help_embed.add_field(name="`/filters tremolo` {{speed}} {{pitch}}",value="คำสั่งเล่นเพลง",inline=False)
-                help_embed.add_field(name="`/filters vibrato` {{speed}} {{pitch}}",value="คำสั่งเล่นเพลง",inline=False)
-                help_embed.add_field(name="`/filters smoothing` {{low}}",value="คำสั่งเล่นเพลง",inline=False)
-                help_embed.add_field(name="`/filters rotation` {{rotation}}",value="คำสั่งเล่นเพลง",inline=False)
-                help_embed.add_field(name="`/filters clean` {{filter}}",value="คำสั่งเล่นเพลง",inline=False)
+                help_embed.add_field(name="`/filters bassboost` {{bands [0-14]}} {{gain [-0.25 - 1]}}",value="bassbost ปรับระดับeq",inline=False)
+                help_embed.add_field(name="`/filters timescale` {{speed >1}} {{pitch >1}} {{rate >1}}",value="ความเร็วเพลง, ระดับเสียง, rate ",inline=False)
+                help_embed.add_field(name="`/filters karaoke` {{level}} {{monolevel}} {{filterband}} {{filterwidth}}",value="ปรับfilter karaoke",inline=False)
+                help_embed.add_field(name="`/filters tremolo` {{speed}} {{pitch}}",value="tremolo",inline=False)
+                help_embed.add_field(name="`/filters vibrato` {{speed}} {{pitch}}",value="vibrato",inline=False)
+                help_embed.add_field(name="`/filters smoothing` {{low}}",value="smoothing",inline=False)
+                help_embed.add_field(name="`/filters rotation` {{rotation}}",value="rotation",inline=False)
+                help_embed.add_field(name="`/filters clean` {{filter}}",value="ล้างfilter",inline=False)
             case 'setup':
                 help_embed.title="setup"
                 help_embed.description="คำสั่งsetupเฉพาะadminเท่านั้น"
@@ -82,8 +82,8 @@ class ChooseView(nextcord.ui.Select):
             case 'massage commands':
                 help_embed.title="massage commands"
                 help_embed.description="คำสั่งข้อความ"
-                help_embed.add_field(name="`/play` ",value="เล่นเพลงจากyoutubeด้วยข้อความ",inline=False)
-                help_embed.add_field(name="`/report` ",value="รายงานข้อความไม่เหมาะสม",inline=False)
+                help_embed.add_field(name="`play` ",value="เล่นเพลงจากyoutubeด้วยข้อความ",inline=False)
+                help_embed.add_field(name="`report` ",value="รายงานข้อความไม่เหมาะสม",inline=False)
         await interaction.response.edit_message(embed = help_embed)
 class Ping(Cog):
     def __init__(self, bot: Bot) -> None:
